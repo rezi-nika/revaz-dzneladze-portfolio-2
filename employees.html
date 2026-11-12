@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="ka" class="scroll-smooth dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="რევაზ ძნელაძე - თანამშრომლები და გუნდის წევრები.">
+    <title>თანამშრომლები | რევაზ ძნელაძე</title>
+
+    <!-- Theme Initialization Script (ფლეშის გარეშე) -->
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.documentElement.classList.add('light');
+                document.documentElement.classList.remove('dark');
+            } else {
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+            }
+        })();
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+Georgian:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans Georgian"', 'Inter', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        display: ['"Space Grotesk"', '"Noto Sans Georgian"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            200: '#a7f3d0',
+                            300: '#6ee7b7',
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                            950: '#022c22',
+                        },
+                        forest: {
+                            800: '#063628',
+                            850: '#042b20',
+                            900: '#03231a',
+                            950: '#021812',
+                            990: '#01120d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* ================= DARK MODE (ნაგულისხმევი) ================= */
+        body {
+            background-color: #021812;
+            background-image:
+                radial-gradient(ellipse 90% 60% at 50% -10%, rgba(16, 185, 129, 0.28), transparent 70%),
+                radial-gradient(circle 800px at 100% 25%, rgba(5, 150, 105, 0.2), transparent 60%),
+                radial-gradient(circle 700px at 0% 70%, rgba(20, 184, 166, 0.18), transparent 60%),
+                radial-gradient(ellipse 80% 50% at 50% 100%, rgba(4, 120, 87, 0.22), transparent 70%);
+            background-attachment: fixed;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        @keyframes floatSlow {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-12px) rotate(1deg);
+            }
+        }
+
+        @keyframes pulseEmerald {
+
+            0%,
+            100% {
+                opacity: 0.35;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.75;
+                transform: scale(1.06);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -600px 0;
+            }
+
+            100% {
+                background-position: 600px 0;
+            }
+        }
+
+        .animate-float-slow {
+            animation: floatSlow 5s ease-in-out infinite;
+        }
+
+        .animate-pulse-emerald {
+            animation: pulseEmerald 5s ease-in-out infinite;
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.4s ease both;
+        }
+
+        .skeleton {
+            background: linear-gradient(90deg, rgba(16, 185, 129, 0.06) 25%, rgba(16, 185, 129, 0.14) 50%, rgba(16, 185, 129, 0.06) 75%);
+            background-size: 600px 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        /* Burger Menu */
+        .burger-line {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: center;
+        }
+
+        .menu-open .burger-line-1 {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .menu-open .burger-line-2 {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .menu-open .burger-line-3 {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        #mobile-menu {
+            transition: max-height 0.35s ease-in-out, opacity 0.3s ease-in-out;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #01120d;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #064e3b;
+            border-radius: 9999px;
+            border: 2px solid #01120d;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10b981;
+        }
+
+        /* Modal */
+        #todo-modal {
+            transition: opacity 0.25s ease;
+        }
+
+        #todo-modal.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #todo-modal:not(.hidden) {
+            opacity: 1;
+        }
+
+        /* ================= LIGHT MODE ================= */
+        html.light {
+            color-scheme: light;
+        }
+
+        html.light body {
+            background-color: #f7fcf9 !important;
+            background-image:
+                radial-gradient(ellipse 95% 65% at 50% -5%, rgba(16, 185, 129, 0.22), transparent 70%),
+                radial-gradient(circle 800px at 100% 25%, rgba(52, 211, 153, 0.16), transparent 60%),
+                radial-gradient(circle 700px at 0% 70%, rgba(20, 184, 166, 0.14), transparent 60%),
+                radial-gradient(ellipse 80% 50% at 50% 100%, rgba(16, 185, 129, 0.18), transparent 70%),
+                linear-gradient(180deg, #ffffff 0%, #f1fcf5 22%, #e5f7ed 55%, #edf9f2 100%) !important;
+            color: #1e293b !important;
+        }
+
+        html.light ::-webkit-scrollbar-track {
+            background: #f0fdf4 !important;
+        }
+
+        html.light ::-webkit-scrollbar-thumb {
+            background: #6ee7b7 !important;
+            border: 2px solid #f0fdf4 !important;
+        }
+
+        html.light ::-webkit-scrollbar-thumb:hover {
+            background: #10b981 !important;
+        }
+
+        html.light .bg-\[size\:36px_36px\] {
+            background-image:
+                linear-gradient(to right, rgba(16, 185, 129, 0.08) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(16, 185, 129, 0.08) 1px, transparent 1px) !important;
+        }
+
+        html.light header#header {
+            background-color: rgba(255, 255, 255, 0.88) !important;
+            border-bottom-color: rgba(16, 185, 129, 0.2) !important;
+            box-shadow: 0 4px 20px -2px rgba(16, 185, 129, 0.08) !important;
+        }
+
+        html.light header#header nav a {
+            color: #334155 !important;
+        }
+
+        html.light header#header nav a:hover {
+            color: #047857 !important;
+            background-color: rgba(16, 185, 129, 0.1) !important;
+        }
+
+        html.light .text-zinc-200,
+        html.light .text-zinc-300 {
+            color: #334155 !important;
+        }
+
+        html.light .text-zinc-400 {
+            color: #64748b !important;
+        }
+
+        html.light .text-white {
+            color: #0f172a !important;
+        }
+
+        html.light .bg-clip-text {
+            background-image: linear-gradient(to right, #047857, #065f46, #0d9488) !important;
+            -webkit-background-clip: text !important;
+        }
+
+        html.light .bg-forest-990 {
+            background-color: #f8fafc !important;
+            border-color: rgba(16, 185, 129, 0.25) !important;
+        }
+
+        html.light .bg-forest-950 {
+            background-color: #ffffff !important;
+        }
+
+        html.light .bg-forest-900 {
+            background-color: rgba(255, 255, 255, 0.9) !important;
+        }
+
+        html.light .border-forest-800,
+        html.light .border-forest-850,
+        html.light .border-brand-900\/60,
+        html.light .border-brand-900\/70,
+        html.light .border-brand-900\/80 {
+            border-color: rgba(16, 185, 129, 0.2) !important;
+        }
+
+        html.light .text-brand-300 {
+            color: #047857 !important;
+        }
+
+        html.light .text-brand-400 {
+            color: #059669 !important;
+        }
+
+        /* Employee cards in light mode */
+        html.light .employee-card {
+            background: linear-gradient(150deg, rgba(255, 255, 255, 0.96) 0%, rgba(240, 253, 244, 0.88) 100%) !important;
+            border-color: rgba(16, 185, 129, 0.25) !important;
+            box-shadow: 0 10px 30px -5px rgba(16, 185, 129, 0.08) !important;
+        }
+
+        html.light .employee-card:hover {
+            border-color: rgba(16, 185, 129, 0.6) !important;
+            box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.16) !important;
+        }
+
+        html.light #mobile-menu {
+            background-color: rgba(255, 255, 255, 0.98) !important;
+            border-top-color: rgba(16, 185, 129, 0.25) !important;
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.1) !important;
+        }
+
+        html.light #mobile-menu .mobile-nav-link {
+            color: #1e293b !important;
+        }
+
+        html.light #mobile-menu .mobile-nav-link:hover {
+            background-color: #f0fdf4 !important;
+        }
+
+        html.light footer#footer {
+            background-color: rgba(240, 253, 244, 0.85) !important;
+            border-top-color: rgba(16, 185, 129, 0.22) !important;
+        }
+
+        html.light footer#footer p,
+        html.light footer#footer a {
+            color: #475569 !important;
+        }
+
+        html.light footer#footer a:hover {
+            color: #047857 !important;
+        }
+
+        #theme-toggle-btn {
+            background-color: rgba(4, 43, 32, 0.9);
+            border-color: rgba(16, 185, 129, 0.4);
+        }
+
+        #theme-toggle-btn:hover {
+            border-color: rgba(16, 185, 129, 0.8);
+            background-color: rgba(6, 60, 45, 1);
+        }
+
+        html.light #theme-toggle-btn {
+            background-color: #ffffff !important;
+            border-color: rgba(16, 185, 129, 0.35) !important;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.12) !important;
+        }
+
+        html.light #theme-toggle-btn:hover {
+            background-color: #f0fdf4 !important;
+            border-color: rgba(16, 185, 129, 0.6) !important;
+        }
+
+        html.light #mobile-menu-btn {
+            background-color: #ffffff !important;
+            border-color: rgba(16, 185, 129, 0.3) !important;
+        }
+
+        html.light .skeleton {
+            background: linear-gradient(90deg, rgba(16, 185, 129, 0.08) 25%, rgba(16, 185, 129, 0.18) 50%, rgba(16, 185, 129, 0.08) 75%) !important;
+            background-size: 600px 100% !important;
+        }
+
+        /* Todo modal in light mode */
+        html.light #todo-modal>div {
+            background-color: #f0fdf4 !important;
+            border-color: rgba(16, 185, 129, 0.3) !important;
+        }
+
+        html.light .todo-item {
+            background-color: rgba(255, 255, 255, 0.9) !important;
+            border-color: rgba(16, 185, 129, 0.2) !important;
+        }
+    </style>
+</head>
+
+<body
+    class="text-zinc-200 font-sans antialiased selection:bg-brand-500 selection:text-black min-h-screen relative overflow-x-hidden flex flex-col">
+
+    <!-- დეკორატიული ფონური ფენები -->
+    <div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden" aria-hidden="true">
+        <div
+            class="absolute -top-32 -right-32 w-[550px] sm:w-[650px] h-[550px] sm:h-[650px] bg-brand-500/25 rounded-full blur-[130px] animate-pulse-emerald">
+        </div>
+        <div
+            class="absolute top-1/3 -left-32 w-[500px] sm:w-[600px] h-[500px] sm:h-[600px] bg-teal-400/20 rounded-full blur-[140px] animate-float-slow">
+        </div>
+        <div
+            class="absolute bottom-10 right-1/4 w-[550px] sm:w-[650px] h-[550px] sm:h-[650px] bg-emerald-600/22 rounded-full blur-[150px]">
+        </div>
+        <div
+            class="absolute inset-0 bg-[linear-gradient(to_right,#10b98115_1px,transparent_1px),linear-gradient(to_bottom,#10b98115_1px,transparent_1px)] bg-[size:36px_36px]">
+        </div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(16,185,129,0.18),transparent_65%)]">
+        </div>
+    </div>
+
+    <!-- ჰედერი და ნავიგაცია -->
+    <header id="header"
+        class="sticky top-0 z-50 backdrop-blur-2xl bg-forest-990/85 border-b border-brand-900/60 shadow-lg shadow-forest-990/50 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20 gap-4">
+
+                <!-- ლოგო & სახელი -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="group inline-flex items-center gap-3">
+                        <span
+                            class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/25 via-teal-500/15 to-transparent border border-brand-500/50 flex items-center justify-center font-mono font-bold text-brand-300 group-hover:scale-105 group-hover:border-brand-400 transition-all shadow-md shadow-brand-500/20">
+                            &lt;R/&gt;
+                        </span>
+                        <div class="flex flex-col">
+                            <span
+                                class="text-lg sm:text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-zinc-100 to-brand-300 bg-clip-text text-transparent group-hover:text-brand-400 transition-colors">
+                                რევაზ ძნელაძე
+                            </span>
+                            <span class="text-[11px] text-brand-300/80 flex items-center gap-1.5 font-mono">
+                                <span class="relative flex h-2 w-2">
+                                    <span
+                                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+                                </span>
+                                <span>Full-Stack Engineer</span>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- მარჯვენა მხარე: ნავიგაცია + ბურგერ -->
+                <div class="flex items-center gap-2 sm:gap-3">
+
+                    <!-- დესკტოპ ნავიგაცია -->
+                    <nav class="hidden md:flex items-center gap-1.5 text-sm font-medium" aria-label="დესკტოპ ნავიგაცია">
+                        <a href="index.html#about"
+                            class="px-3 py-2 rounded-xl text-zinc-300 hover:text-white hover:bg-forest-900/80 hover:border-brand-500/30 border border-transparent transition-all duration-200">
+                            ჩემს შესახებ
+                        </a>
+                        <a href="index.html#skills"
+                            class="px-3 py-2 rounded-xl text-zinc-300 hover:text-white hover:bg-forest-900/80 hover:border-brand-500/30 border border-transparent transition-all duration-200">
+                            უნარები
+                        </a>
+                        <a href="index.html#experience"
+                            class="px-3 py-2 rounded-xl text-zinc-300 hover:text-white hover:bg-forest-900/80 hover:border-brand-500/30 border border-transparent transition-all duration-200">
+                            გამოცდილება
+                        </a>
+                        <a href="index1.html"
+                            class="px-3.5 py-2 rounded-xl text-zinc-300 hover:text-white hover:bg-forest-900/80 hover:border-brand-500/30 border border-transparent transition-all duration-200 flex items-center gap-1.5">
+                            <i class="fa-solid fa-code-branch text-xs text-brand-400"></i>
+                            <span>პროექტები</span>
+                        </a>
+                        <a href="employees.html"
+                            class="px-3.5 py-2 rounded-xl text-forest-990 bg-gradient-to-r from-brand-400 to-teal-400 font-bold shadow-md shadow-brand-500/20 transition-all duration-200 flex items-center gap-1.5">
+                            <i class="fa-solid fa-users text-xs text-forest-990"></i>
+                            <span>თანამშრომლები</span>
+                        </a>
+                        <a href="index.html#contact"
+                            class="ml-1 px-3.5 py-2 rounded-xl bg-forest-900/90 border border-brand-800/60 hover:border-brand-500/60 hover:bg-forest-850 text-zinc-200 hover:text-white font-semibold transition-all duration-200 flex items-center gap-1.5">
+                            <i class="fa-regular fa-paper-plane text-xs text-brand-400"></i>
+                            <span>კონტაქტი</span>
+                        </a>
+                    </nav>
+
+                    <!-- თემის შეცვლის ღილაკი -->
+                    <button id="theme-toggle-btn" type="button"
+                        class="p-2.5 rounded-xl border transition-all duration-200 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-brand-500 shadow-sm cursor-pointer"
+                        aria-label="თემის შეცვლა (Light / Dark)">
+                        <i id="theme-toggle-icon" class="fa-solid fa-sun text-amber-400 text-sm"></i>
+                    </button>
+
+                    <!-- ბურგერ მენიუს ღილაკი -->
+                    <button id="mobile-menu-btn" type="button"
+                        class="md:hidden relative p-2.5 rounded-xl bg-forest-900/90 border border-brand-900/80 text-brand-300 hover:text-white hover:border-brand-500/60 hover:bg-forest-850 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all"
+                        aria-label="მენიუს გახსნა/დახურვა" aria-expanded="false" aria-controls="mobile-menu">
+                        <div class="w-6 h-5 flex flex-col justify-between items-center" id="burger-icon">
+                            <span class="burger-line burger-line-1 w-6 h-0.5 bg-brand-400 rounded-full"></span>
+                            <span class="burger-line burger-line-2 w-6 h-0.5 bg-brand-400 rounded-full"></span>
+                            <span class="burger-line burger-line-3 w-6 h-0.5 bg-brand-400 rounded-full"></span>
+                        </div>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- მობილური ჩამოსაშლელი მენიუ -->
+        <div id="mobile-menu"
+            class="hidden md:hidden overflow-hidden border-t border-brand-900/80 bg-forest-990/95 backdrop-blur-2xl px-4 py-5 shadow-2xl">
+            <nav class="flex flex-col gap-2" aria-label="მობილური ნავიგაცია">
+                <a href="index.html#about"
+                    class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-zinc-200 hover:text-white hover:bg-forest-900/90 border border-transparent hover:border-brand-900 transition-all">
+                    <span
+                        class="w-8 h-8 rounded-lg bg-brand-500/15 border border-brand-500/25 flex items-center justify-center text-brand-400">
+                        <i class="fa-regular fa-user text-sm"></i>
+                    </span>
+                    <span class="font-medium text-base">ჩემს შესახებ</span>
+                </a>
+
+                <a href="index.html#skills"
+                    class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-zinc-200 hover:text-white hover:bg-forest-900/90 border border-transparent hover:border-brand-900 transition-all">
+                    <span
+                        class="w-8 h-8 rounded-lg bg-teal-500/15 border border-teal-500/25 flex items-center justify-center text-teal-400">
+                        <i class="fa-solid fa-bolt text-sm"></i>
+                    </span>
+                    <span class="font-medium text-base">უნარები</span>
+                </a>
+
+                <a href="index.html#experience"
+                    class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-zinc-200 hover:text-white hover:bg-forest-900/90 border border-transparent hover:border-brand-900 transition-all">
+                    <span
+                        class="w-8 h-8 rounded-lg bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center text-emerald-400">
+                        <i class="fa-solid fa-briefcase text-sm"></i>
+                    </span>
+                    <span class="font-medium text-base">გამოცდილება</span>
+                </a>
+
+                <a href="index1.html"
+                    class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-zinc-200 hover:text-white hover:bg-forest-900/90 border border-transparent hover:border-brand-900 transition-all">
+                    <span
+                        class="w-8 h-8 rounded-lg bg-brand-500/15 border border-brand-500/25 flex items-center justify-center text-brand-400">
+                        <i class="fa-solid fa-code-branch text-sm"></i>
+                    </span>
+                    <span class="font-medium text-base">პროექტები</span>
+                </a>
+
+                <a href="employees.html"
+                    class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-forest-990 bg-gradient-to-r from-brand-400 to-teal-400 font-bold transition-all">
+                    <span class="w-8 h-8 rounded-lg bg-forest-990/20 flex items-center justify-center text-forest-990">
+                        <i class="fa-solid fa-users text-sm"></i>
+                    </span>
+                    <span class="text-base">თანამშრომლები (აქტიური)</span>
+                </a>
+
+                <a href="index.html#contact"
+                    class="mobile-nav-link mt-2 flex items-center justify-center gap-2.5 px-4 py-3.5 rounded-xl bg-gradient-to-r from-brand-500 to-teal-400 text-forest-990 font-bold text-base shadow-lg shadow-brand-500/30 transition-all">
+                    <i class="fa-regular fa-paper-plane text-sm"></i>
+                    <span>დამიკავშირდით</span>
+                </a>
+
+                <!-- სოციალური ბმულები -->
+                <div
+                    class="mt-4 pt-4 border-t border-brand-900/80 flex items-center justify-around text-zinc-400 text-sm">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+                        class="hover:text-brand-300 transition-colors flex items-center gap-2 py-1">
+                        <i class="fa-brands fa-github text-base"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <span class="text-brand-900">|</span>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+                        class="hover:text-brand-300 transition-colors flex items-center gap-2 py-1">
+                        <i class="fa-brands fa-linkedin text-base"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- მთავარი შიგთავსი -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 flex-grow w-full space-y-10 sm:space-y-12">
+
+        <!-- სათაური და ფილტრი -->
+        <section id="employees" class="space-y-6 sm:space-y-8">
+            <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-brand-900/70">
+                <div class="space-y-2">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/15 border border-brand-500/30 text-brand-300 text-xs font-semibold tracking-wide uppercase font-mono">
+                        <i class="fa-solid fa-users text-xs"></i>
+                        <span>გუნდის წევრები</span>
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white">
+                        თანამშრომლები
+                    </h1>
+                    <p class="text-zinc-300 text-xs sm:text-sm md:text-base leading-relaxed">
+                        გუნდის 10 წევრი — მათი საკონტაქტო ინფორმაცია და სამუშაო დეტალები:
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-2.5">
+                    <!-- ძებნა -->
+                    <div class="relative">
+                        <i
+                            class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-brand-400 text-xs"></i>
+                        <input id="search-input" type="text" placeholder="ძიება..."
+                            class="w-full sm:w-48 pl-8 pr-3 py-2 rounded-xl bg-forest-900/80 border border-brand-900/70 text-zinc-200 placeholder-zinc-500 text-sm font-mono focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all">
+                    </div>
+                    <!-- დაბრუნება -->
+                    <a href="index.html"
+                        class="inline-flex items-center justify-center gap-2.5 px-4 py-2.5 rounded-xl bg-forest-900/90 border border-brand-800/60 hover:border-brand-500/60 hover:bg-forest-850 text-zinc-300 hover:text-white text-sm font-medium transition-all shadow-sm">
+                        <i class="fa-solid fa-arrow-left text-xs text-brand-400"></i>
+                        <span>მთავარზე დაბრუნება</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- სტატისტიკა -->
+            <div id="stats-bar" class="hidden grid-cols-3 gap-3 sm:gap-4">
+                <div
+                    class="bg-forest-900/75 border border-brand-900/70 rounded-2xl p-3 sm:p-4 text-center backdrop-blur-xl">
+                    <div class="text-xl sm:text-2xl font-black font-mono text-brand-300" id="stat-total">0</div>
+                    <div class="text-xs text-zinc-400 mt-0.5">სულ წევრი</div>
+                </div>
+                <div
+                    class="bg-forest-900/75 border border-brand-900/70 rounded-2xl p-3 sm:p-4 text-center backdrop-blur-xl">
+                    <div class="text-xl sm:text-2xl font-black font-mono text-teal-300" id="stat-companies">0</div>
+                    <div class="text-xs text-zinc-400 mt-0.5">კომპანია</div>
+                </div>
+                <div
+                    class="bg-forest-900/75 border border-brand-900/70 rounded-2xl p-3 sm:p-4 text-center backdrop-blur-xl">
+                    <div class="text-xl sm:text-2xl font-black font-mono text-emerald-300" id="stat-cities">0</div>
+                    <div class="text-xs text-zinc-400 mt-0.5">ქალაქი</div>
+                </div>
+            </div>
+
+            <!-- Loading Skeleton -->
+            <div id="loading-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5 sm:gap-6">
+                <!-- 9 skeleton cards -->
+                <div class="rounded-2xl border border-brand-900/40 p-5 space-y-3 backdrop-blur-xl bg-forest-900/50">
+                    <div class="flex items-center gap-3">
+                        <div class="skeleton w-12 h-12 rounded-xl"></div>
+                        <div class="flex-1 space-y-2">
+                            <div class="skeleton h-4 rounded-lg w-3/4"></div>
+                            <div class="skeleton h-3 rounded-lg w-1/2"></div>
+                        </div>
+                    </div>
+                    <div class="skeleton h-3 rounded-lg w-full"></div>
+                    <div class="skeleton h-3 rounded-lg w-5/6"></div>
+                    <div class="skeleton h-3 rounded-lg w-4/6"></div>
+                    <div class="skeleton h-8 rounded-xl w-full mt-2"></div>
+                </div>
+                <div class="rounded-2xl border border-brand-900/40 p-5 space-y-3 backdrop-blur-xl bg-forest-900/50">
+                    <div class="flex items-center gap-3">
+                        <div class="skeleton w-12 h-12 rounded-xl"></div>
+                        <div class="flex-1 space-y-2">
+                            <div class="skeleton h-4 rounded-lg w-3/4"></div>
+                            <div class="skeleton h-3 rounded-lg w-1/2"></div>
+                        </div>
+                    </div>
+                    <div class="skeleton h-3 rounded-lg w-full"></div>
+                    <div class="skeleton h-3 rounded-lg w-5/6"></div>
+                    <div class="skeleton h-3 rounded-lg w-4/6"></div>
+                    <div class="skeleton h-8 rounded-xl w-full mt-2"></div>
+                </div>
+                <div class="rounded-2xl border border-brand-900/40 p-5 space-y-3 backdrop-blur-xl bg-forest-900/50">
+                    <div class="flex items-center gap-3">
+                        <div class="skeleton w-12 h-12 rounded-xl"></div>
+                        <div class="flex-1 space-y-2">
+                            <div class="skeleton h-4 rounded-lg w-3/4"></div>
+                            <div class="skeleton h-3 rounded-lg w-1/2"></div>
+                        </div>
+                    </div>
+                    <div class="skeleton h-3 rounded-lg w-full"></div>
+                    <div class="skeleton h-3 rounded-lg w-5/6"></div>
+                    <div class="skeleton h-3 rounded-lg w-4/6"></div>
+                    <div class="skeleton h-8 rounded-xl w-full mt-2"></div>
+                </div>
+                <div class="rounded-2xl border border-brand-900/40 p-5 space-y-3 backdrop-blur-xl bg-forest-900/50">
+                    <div class="flex items-center gap-3">
+                        <div class="skeleton w-12 h-12 rounded-xl"></div>
+                        <div class="flex-1 space-y-2">
+                            <div class="skeleton h-4 rounded-lg w-3/4"></div>
+                            <div class="skeleton h-3 rounded-lg w-1/2"></div>
+                        </div>
+                    </div>
+                    <div class="skeleton h-3 rounded-lg w-full"></div>
+                    <div class="skeleton h-3 rounded-lg w-5/6"></div>
+                    <div class="skeleton h-3 rounded-lg w-4/6"></div>
+                    <div class="skeleton h-8 rounded-xl w-full mt-2"></div>
+                </div>
+                <div class="rounded-2xl border border-brand-900/40 p-5 space-y-3 backdrop-blur-xl bg-forest-900/50">
+                    <div class="flex items-center gap-3">
+                        <div class="skeleton w-12 h-12 rounded-xl"></div>
+                        <div class="flex-1 space-y-2">
+                            <div class="skeleton h-4 rounded-lg w-3/4"></div>
+                            <div class="skeleton h-3 rounded-lg w-1/2"></div>
+                        </div>
+                    </div>
+                    <div class="skeleton h-3 rounded-lg w-full"></div>
+                    <div class="skeleton h-3 rounded-lg w-5/6"></div>
+                    <div class="skeleton h-3 rounded-lg w-4/6"></div>
+                    <div class="skeleton h-8 rounded-xl w-full mt-2"></div>
+                </div>
+                <div class="rounded-2xl border border-brand-900/40 p-5 space-y-3 backdrop-blur-xl bg-forest-900/50">
+                    <div class="flex items-center gap-3">
+                        <div class="skeleton w-12 h-12 rounded-xl"></div>
+                        <div class="flex-1 space-y-2">
+                            <div class="skeleton h-4 rounded-lg w-3/4"></div>
+                            <div class="skeleton h-3 rounded-lg w-1/2"></div>
+                        </div>
+                    </div>
+                    <div class="skeleton h-3 rounded-lg w-full"></div>
+                    <div class="skeleton h-3 rounded-lg w-5/6"></div>
+                    <div class="skeleton h-3 rounded-lg w-4/6"></div>
+                    <div class="skeleton h-8 rounded-xl w-full mt-2"></div>
+                </div>
+            </div>
+
+            <!-- Error state -->
+            <div id="error-state" class="hidden flex flex-col items-center justify-center py-20 text-center space-y-4">
+                <div
+                    class="w-16 h-16 rounded-2xl bg-red-500/15 border border-red-500/30 flex items-center justify-center text-red-400 text-2xl">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white">მონაცემები ვერ ჩაიტვირთა</h3>
+                <p class="text-zinc-400 text-sm max-w-sm" id="error-message">API-სთან კავშირი ვერ დამყარდა. გთხოვთ
+                    სცადოთ მოგვიანებით.</p>
+                <button id="retry-btn"
+                    class="mt-2 px-5 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-400 text-forest-990 font-bold text-sm transition-all shadow-md shadow-brand-500/30 flex items-center gap-2">
+                    <i class="fa-solid fa-rotate-right text-xs"></i>
+                    <span>ხელახლა ცდა</span>
+                </button>
+            </div>
+
+            <!-- Empty search state -->
+            <div id="empty-search" class="hidden flex flex-col items-center justify-center py-16 text-center space-y-3">
+                <div
+                    class="w-14 h-14 rounded-2xl bg-brand-500/15 border border-brand-500/30 flex items-center justify-center text-brand-400 text-xl">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <h3 class="text-base font-bold text-white">შედეგი ვერ მოიძებნა</h3>
+                <p class="text-zinc-400 text-sm">სცადეთ სხვა საძიებო სიტყვა</p>
+            </div>
+
+            <!-- Employees Grid (populated by JS) -->
+            <div id="employees-grid" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"></div>
+        </section>
+
+    </main>
+
+    <!-- Todo დავალებების მოდალი -->
+    <div id="todo-modal" class="hidden fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-4"
+        role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <!-- backdrop -->
+        <div id="modal-backdrop" class="absolute inset-0 bg-forest-990/80 backdrop-blur-sm"></div>
+        <!-- content -->
+        <div
+            class="relative w-full max-w-lg bg-forest-900 border border-brand-900/80 rounded-2xl shadow-2xl max-h-[85vh] flex flex-col">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between px-5 py-4 border-b border-brand-900/70">
+                <div class="space-y-0.5">
+                    <div class="flex items-center gap-2">
+                        <span
+                            class="w-6 h-6 rounded-lg bg-brand-500/20 border border-brand-500/30 flex items-center justify-center">
+                            <i class="fa-solid fa-list-check text-brand-400 text-[11px]"></i>
+                        </span>
+                        <h2 id="modal-title" class="text-base font-bold text-white">დავალებები</h2>
+                    </div>
+                    <p id="modal-username" class="text-xs text-brand-400 font-mono pl-8"></p>
+                </div>
+                <button id="modal-close"
+                    class="w-8 h-8 rounded-xl bg-forest-800 border border-brand-900/60 flex items-center justify-center text-zinc-400 hover:text-white hover:border-brand-500/50 transition-all"
+                    aria-label="მოდალის დახურვა">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Summary badges -->
+            <div class="px-5 py-3 border-b border-brand-900/50 flex items-center gap-3 text-xs font-mono">
+                <span class="px-2.5 py-1 rounded-full bg-brand-500/15 text-brand-300 border border-brand-500/25">
+                    სულ: <span id="modal-total" class="font-bold">0</span>
+                </span>
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/25">
+                    <i class="fa-solid fa-check text-[10px]"></i> შესრულებული: <span id="modal-done"
+                        class="font-bold">0</span>
+                </span>
+                <span class="px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/25">
+                    <i class="fa-regular fa-clock text-[10px]"></i> მოლოდინში: <span id="modal-pending"
+                        class="font-bold">0</span>
+                </span>
+            </div>
+
+            <!-- Modal loading -->
+            <div id="modal-loading" class="flex-1 flex items-center justify-center py-12">
+                <div class="flex flex-col items-center gap-3">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-brand-500/15 border border-brand-500/30 flex items-center justify-center">
+                        <i class="fa-solid fa-spinner animate-spin text-brand-400"></i>
+                    </div>
+                    <span class="text-sm text-zinc-400 font-mono">იტვირთება...</span>
+                </div>
+            </div>
+
+            <!-- Modal todo list -->
+            <div id="modal-todo-list" class="hidden flex-1 overflow-y-auto px-5 py-4 space-y-2"></div>
+        </div>
+    </div>
+
+    <!-- ფუტერი -->
+    <footer id="footer" class="mt-auto border-t border-brand-900/60 bg-forest-990/80 backdrop-blur-xl py-6 sm:py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-xs sm:text-sm text-zinc-400 text-center sm:text-left">
+                    &copy; 2025 <span class="text-brand-400 font-semibold">რევაზ ძნელაძე</span>. ყველა უფლება დაცულია.
+                </p>
+                <div class="flex items-center gap-4 text-xs text-zinc-500">
+                    <a href="index.html" class="hover:text-brand-300 transition-colors">მთავარი</a>
+                    <span class="text-brand-900">·</span>
+                    <a href="index1.html" class="hover:text-brand-300 transition-colors">პროექტები</a>
+                    <span class="text-brand-900">·</span>
+                    <a href="employees.html" class="text-brand-400">თანამშრომლები</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // ============================================================
+            // 1) THEME TOGGLE
+            // ============================================================
+            const themeBtn = document.getElementById('theme-toggle-btn');
+            const themeIcon = document.getElementById('theme-toggle-icon');
+
+            function applyTheme(theme) {
+                if (theme === 'light') {
+                    document.documentElement.classList.add('light');
+                    document.documentElement.classList.remove('dark');
+                    if (themeIcon) themeIcon.className = 'fa-solid fa-moon text-brand-300 text-sm';
+                } else {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.classList.remove('light');
+                    if (themeIcon) themeIcon.className = 'fa-solid fa-sun text-amber-400 text-sm';
+                }
+            }
+
+            const currentIsLight = document.documentElement.classList.contains('light');
+            applyTheme(currentIsLight ? 'light' : 'dark');
+
+            if (themeBtn) {
+                themeBtn.addEventListener('click', () => {
+                    const isNowLight = document.documentElement.classList.contains('light');
+                    const targetTheme = isNowLight ? 'dark' : 'light';
+                    applyTheme(targetTheme);
+                    localStorage.setItem('theme', targetTheme);
+                });
+            }
+
+            // ============================================================
+            // 2) BURGER MENU
+            // ============================================================
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const burgerIcon = document.getElementById('burger-icon');
+            const navLinks = document.querySelectorAll('.mobile-nav-link');
+
+            function toggleMenu(forceClose = false) {
+                const isOpen = forceClose ? false : mobileMenu.classList.contains('hidden');
+                if (isOpen) {
+                    mobileMenu.classList.remove('hidden');
+                    burgerIcon.classList.add('menu-open');
+                    menuBtn.setAttribute('aria-expanded', 'true');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    burgerIcon.classList.remove('menu-open');
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                }
+            }
+
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(); });
+                navLinks.forEach(link => link.addEventListener('click', () => toggleMenu(true)));
+                document.addEventListener('click', (e) => {
+                    if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) toggleMenu(true);
+                });
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+                        toggleMenu(true);
+                        menuBtn.focus();
+                    }
+                });
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth >= 768 && !mobileMenu.classList.contains('hidden')) toggleMenu(true);
+                });
+            }
+
+            // ============================================================
+            // 3) FETCH USERS (GET /users)
+            // ============================================================
+            const loadingGrid = document.getElementById('loading-grid');
+            const employeesGrid = document.getElementById('employees-grid');
+            const errorState = document.getElementById('error-state');
+            const errorMessage = document.getElementById('error-message');
+            const retryBtn = document.getElementById('retry-btn');
+            const searchInput = document.getElementById('search-input');
+            const emptySearch = document.getElementById('empty-search');
+            const statsBar = document.getElementById('stats-bar');
+
+            let allUsers = [];
+
+            // Avatar color palette (cycling)
+            const avatarPalettes = [
+                { bg: 'from-brand-500 to-teal-400', text: 'text-forest-990' },
+                { bg: 'from-teal-400 to-cyan-400', text: 'text-forest-990' },
+                { bg: 'from-emerald-400 to-brand-300', text: 'text-forest-990' },
+                { bg: 'from-brand-300 to-brand-500', text: 'text-forest-990' },
+                { bg: 'from-cyan-400 to-brand-400', text: 'text-forest-990' },
+            ];
+
+            function getInitials(name) {
+                return name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+            }
+
+            function renderUsers(users) {
+                if (users.length === 0) {
+                    employeesGrid.classList.add('hidden');
+                    emptySearch.classList.remove('hidden');
+                    emptySearch.classList.add('flex');
+                    return;
+                }
+                emptySearch.classList.add('hidden');
+                emptySearch.classList.remove('flex');
+                employeesGrid.classList.remove('hidden');
+
+                employeesGrid.innerHTML = users.map((user, idx) => {
+                    const palette = avatarPalettes[idx % avatarPalettes.length];
+                    const initials = getInitials(user.name);
+                    return `
+                    <article class="employee-card flex flex-col bg-forest-900/75 border border-brand-900/70 rounded-2xl p-5 hover:border-brand-500/60 hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.25)] hover:bg-forest-850/80 transition-all duration-300 group backdrop-blur-xl animate-fade-in-up"
+                        style="animation-delay: ${idx * 60}ms">
+
+                        <!-- Avatar + Name -->
+                        <div class="flex items-center gap-3.5 mb-4">
+                            <div class="relative flex-shrink-0">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br ${palette.bg} flex items-center justify-center font-mono font-black text-lg ${palette.text} shadow-md">
+                                    ${initials}
+                                </div>
+                                <span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-brand-400 border-2 border-forest-900 flex items-center justify-center">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-forest-990 animate-ping absolute"></span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-forest-990 relative"></span>
+                                </span>
+                            </div>
+                            <div class="min-w-0">
+                                <h2 class="text-sm sm:text-base font-bold text-white group-hover:text-brand-300 transition-colors leading-tight truncate">${user.name}</h2>
+                                <p class="text-[11px] text-brand-400 font-mono truncate">@${user.username}</p>
+                            </div>
+                        </div>
+
+                        <!-- Contact Info -->
+                        <div class="space-y-2 text-xs flex-1">
+                            <div class="flex items-center gap-2 text-zinc-300">
+                                <span class="w-5 h-5 rounded-md bg-brand-500/15 flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-regular fa-envelope text-brand-400 text-[10px]"></i>
+                                </span>
+                                <span class="truncate font-mono">${user.email}</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-zinc-300">
+                                <span class="w-5 h-5 rounded-md bg-teal-500/15 flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-phone text-teal-400 text-[10px]"></i>
+                                </span>
+                                <span class="truncate font-mono">${user.phone}</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-zinc-300">
+                                <span class="w-5 h-5 rounded-md bg-emerald-500/15 flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-globe text-emerald-400 text-[10px]"></i>
+                                </span>
+                                <a href="https://${user.website}" target="_blank" rel="noopener" class="truncate font-mono text-brand-300 hover:underline">${user.website}</a>
+                            </div>
+                            <div class="flex items-center gap-2 text-zinc-300">
+                                <span class="w-5 h-5 rounded-md bg-brand-500/15 flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-location-dot text-brand-400 text-[10px]"></i>
+                                </span>
+                                <span class="truncate">${user.address.city}, ${user.address.street}</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-zinc-300">
+                                <span class="w-5 h-5 rounded-md bg-amber-500/15 flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-building text-amber-400 text-[10px]"></i>
+                                </span>
+                                <span class="truncate font-semibold text-zinc-200">${user.company.name}</span>
+                            </div>
+                        </div>
+
+                        <!-- Company Catchphrase -->
+                        <div class="mt-3 px-3 py-2 rounded-xl bg-forest-950/80 border border-brand-900/50 text-[11px] text-zinc-400 italic leading-snug line-clamp-2">
+                            "${user.company.catchPhrase}"
+                        </div>
+
+                        <!-- Todo Button -->
+                        <button
+                            class="todo-btn mt-4 w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-brand-500/15 border border-brand-500/25 text-brand-300 hover:bg-brand-500 hover:text-forest-990 hover:border-brand-500 font-semibold text-xs transition-all duration-200 group-hover:border-brand-500/50"
+                            data-userid="${user.id}" data-username="${user.name}">
+                            <i class="fa-solid fa-list-check text-[11px]"></i>
+                            <span>დავალებების ნახვა</span>
+                        </button>
+                    </article>`;
+                }).join('');
+
+                // Attach todo button listeners
+                document.querySelectorAll('.todo-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const userId = btn.dataset.userid;
+                        const userName = btn.dataset.username;
+                        openTodoModal(userId, userName);
+                    });
+                });
+            }
+
+            function updateStats(users) {
+                const companies = new Set(users.map(u => u.company.name)).size;
+                const cities = new Set(users.map(u => u.address.city)).size;
+                document.getElementById('stat-total').textContent = users.length;
+                document.getElementById('stat-companies').textContent = companies;
+                document.getElementById('stat-cities').textContent = cities;
+                statsBar.classList.remove('hidden');
+                statsBar.classList.add('grid');
+            }
+
+            function showError(msg) {
+                loadingGrid.classList.add('hidden');
+                employeesGrid.classList.add('hidden');
+                errorState.classList.remove('hidden');
+                errorState.classList.add('flex');
+                if (msg) errorMessage.textContent = msg;
+            }
+
+            function loadUsers() {
+                loadingGrid.classList.remove('hidden');
+                errorState.classList.add('hidden');
+                errorState.classList.remove('flex');
+                employeesGrid.classList.add('hidden');
+                statsBar.classList.add('hidden');
+                statsBar.classList.remove('grid');
+
+                fetch('https://jsonplaceholder.typicode.com/users')
+                    .then(res => {
+                        if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+                        return res.json();
+                    })
+                    .then(users => {
+                        allUsers = users;
+                        loadingGrid.classList.add('hidden');
+                        updateStats(users);
+                        renderUsers(users);
+                    })
+                    .catch(err => {
+                        console.error('Users fetch error:', err);
+                        showError(`API-სთან კავშირი ვერ დამყარდა: ${err.message}`);
+                    });
+            }
+
+            // Search / filter
+            if (searchInput) {
+                searchInput.addEventListener('input', () => {
+                    const q = searchInput.value.trim().toLowerCase();
+                    if (!q) { renderUsers(allUsers); return; }
+                    const filtered = allUsers.filter(u =>
+                        u.name.toLowerCase().includes(q) ||
+                        u.username.toLowerCase().includes(q) ||
+                        u.email.toLowerCase().includes(q) ||
+                        u.company.name.toLowerCase().includes(q) ||
+                        u.address.city.toLowerCase().includes(q)
+                    );
+                    renderUsers(filtered);
+                });
+            }
+
+            if (retryBtn) retryBtn.addEventListener('click', loadUsers);
+
+            loadUsers();
+
+            // ============================================================
+            // 4) TODOS MODAL (GET /todos?userId=)
+            // ============================================================
+            const todoModal = document.getElementById('todo-modal');
+            const modalBackdrop = document.getElementById('modal-backdrop');
+            const modalClose = document.getElementById('modal-close');
+            const modalTitle = document.getElementById('modal-title');
+            const modalUsername = document.getElementById('modal-username');
+            const modalLoading = document.getElementById('modal-loading');
+            const modalTodoList = document.getElementById('modal-todo-list');
+            const modalTotal = document.getElementById('modal-total');
+            const modalDone = document.getElementById('modal-done');
+            const modalPending = document.getElementById('modal-pending');
+
+            function openTodoModal(userId, userName) {
+                todoModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                modalTitle.textContent = userName + ' — დავალებები';
+                modalUsername.textContent = `GET /todos?userId=${userId}`;
+                modalLoading.classList.remove('hidden');
+                modalTodoList.classList.add('hidden');
+                modalTodoList.innerHTML = '';
+                modalTotal.textContent = '0';
+                modalDone.textContent = '0';
+                modalPending.textContent = '0';
+
+                fetch(`https://jsonplaceholder.typicode.com/todos?userId=${userId}`)
+                    .then(res => {
+                        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                        return res.json();
+                    })
+                    .then(todos => {
+                        const done = todos.filter(t => t.completed).length;
+                        const pending = todos.length - done;
+                        modalTotal.textContent = todos.length;
+                        modalDone.textContent = done;
+                        modalPending.textContent = pending;
+
+                        modalTodoList.innerHTML = todos.map((todo, i) => `
+                            <div class="todo-item flex items-start gap-3 px-3.5 py-3 rounded-xl bg-forest-950/80 border border-brand-900/50 group/todo hover:border-brand-500/40 transition-all">
+                                <span class="mt-0.5 w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center border-2 ${todo.completed
+                                ? 'bg-brand-500 border-brand-500 text-forest-990'
+                                : 'border-zinc-600 text-transparent'
+                            }">
+                                    ${todo.completed ? '<i class="fa-solid fa-check text-[9px]"></i>' : ''}
+                                </span>
+                                <span class="text-xs leading-relaxed flex-1 ${todo.completed ? 'line-through text-zinc-500' : 'text-zinc-200'}">${todo.title}</span>
+                                <span class="text-[10px] font-mono flex-shrink-0 ${todo.completed ? 'text-brand-400' : 'text-amber-400'}">
+                                    ${todo.completed ? 'შესრულდა' : 'მოლოდინში'}
+                                </span>
+                            </div>
+                        `).join('');
+
+                        modalLoading.classList.add('hidden');
+                        modalTodoList.classList.remove('hidden');
+                    })
+                    .catch(err => {
+                        modalLoading.innerHTML = `
+                            <div class="flex flex-col items-center gap-2 text-center">
+                                <i class="fa-solid fa-triangle-exclamation text-red-400 text-xl"></i>
+                                <span class="text-sm text-zinc-400">ვერ ჩაიტვირთა: ${err.message}</span>
+                            </div>`;
+                    });
+            }
+
+            function closeTodoModal() {
+                todoModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+
+            if (modalClose) modalClose.addEventListener('click', closeTodoModal);
+            if (modalBackdrop) modalBackdrop.addEventListener('click', closeTodoModal);
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !todoModal.classList.contains('hidden')) closeTodoModal();
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

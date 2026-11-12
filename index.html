@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="ka" class="scroll-smooth dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="რევაზ ძნელაძე - Full-Stack ვებ-დეველოპერის პორტფოლიო შექმნილი React-ით. პროექტები, ტექნოლოგიური სტეკი, თანამშრომლები და საკონტაქტო ინფორმაცია." />
+  <title>რევაზ ძნელაძე | React პორტფოლიო</title>
+
+  <!-- Theme Initialization Script (ხელს უშლის ფლეშს ჩატვირთვისას) -->
+  <script>
+    (function () {
+      try {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+          document.documentElement.classList.add('light');
+          document.documentElement.classList.remove('dark');
+        } else {
+          document.documentElement.classList.add('dark');
+          document.documentElement.classList.remove('light');
+        }
+      } catch (e) { }
+    })();
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+Georgian:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Tailwind CSS CDN with custom Emerald Forest theme configuration -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Noto Sans Georgian"', 'Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+            display: ['"Space Grotesk"', '"Noto Sans Georgian"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              200: '#a7f3d0',
+              300: '#6ee7b7',
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+              950: '#022c22',
+            },
+            forest: {
+              800: '#063628',
+              850: '#042b20',
+              900: '#03231a',
+              950: '#021812',
+              990: '#01120d',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- React 18, ReactDOM & Babel Standalone (უზრუნველყოფს მყისიერ გაშვებას ბრაუზერში პირდაპირი გახსნისასაც კი) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js" crossorigin></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+
+  <style>
+    /* ================= DARK MODE ================= */
+    body {
+      background-color: #021812;
+      background-image:
+        radial-gradient(ellipse 90% 60% at 50% -10%, rgba(16, 185, 129, 0.28), transparent 70%),
+        radial-gradient(circle 800px at 100% 25%, rgba(5, 150, 105, 0.2), transparent 60%),
+        radial-gradient(circle 700px at 0% 70%, rgba(20, 184, 166, 0.18), transparent 60%),
+        radial-gradient(ellipse 80% 50% at 50% 100%, rgba(4, 120, 87, 0.22), transparent 70%);
+      background-attachment: fixed;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(1deg); }
+    }
+
+    @keyframes pulseEmerald {
+      0%, 100% { opacity: 0.35; transform: scale(1); }
+      50% { opacity: 0.75; transform: scale(1.06); }
+    }
+
+    @keyframes borderGlow {
+      0%, 100% { border-color: rgba(16, 185, 129, 0.3); }
+      50% { border-color: rgba(52, 211, 153, 0.7); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -600px 0; }
+      100% { background-position: 600px 0; }
+    }
+
+    .animate-float-slow { animation: floatSlow 5s ease-in-out infinite; }
+    .animate-pulse-emerald { animation: pulseEmerald 5s ease-in-out infinite; }
+    .animate-border-glow { animation: borderGlow 3s ease-in-out infinite; }
+    .animate-fade-in { animation: fadeIn 0.25s ease both; }
+    .animate-fade-in-up { animation: fadeInUp 0.35s ease both; }
+
+    .skeleton {
+      background: linear-gradient(90deg, rgba(16,185,129,0.06) 25%, rgba(16,185,129,0.16) 50%, rgba(16,185,129,0.06) 75%);
+      background-size: 600px 100%;
+      animation: shimmer 1.5s infinite;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #01120d; }
+    ::-webkit-scrollbar-thumb { background: #064e3b; border-radius: 9999px; border: 2px solid #01120d; }
+    ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+
+    /* ================= LIGHT MODE ================= */
+    html.light { color-scheme: light; }
+
+    html.light body {
+      background-color: #f7fcf9 !important;
+      background-image:
+        radial-gradient(ellipse 95% 65% at 50% -5%, rgba(16, 185, 129, 0.22), transparent 70%),
+        radial-gradient(circle 800px at 100% 25%, rgba(52, 211, 153, 0.16), transparent 60%),
+        radial-gradient(circle 700px at 0% 70%, rgba(20, 184, 166, 0.14), transparent 60%),
+        radial-gradient(ellipse 80% 50% at 50% 100%, rgba(16, 185, 129, 0.18), transparent 70%),
+        linear-gradient(180deg, #ffffff 0%, #f1fcf5 22%, #e5f7ed 55%, #edf9f2 100%) !important;
+      color: #1e293b !important;
+    }
+
+    html.light ::-webkit-scrollbar-track { background: #f0fdf4 !important; }
+    html.light ::-webkit-scrollbar-thumb { background: #6ee7b7 !important; border: 2px solid #f0fdf4 !important; }
+    html.light ::-webkit-scrollbar-thumb:hover { background: #10b981 !important; }
+
+    html.light header#header {
+      background-color: rgba(255, 255, 255, 0.88) !important;
+      border-bottom-color: rgba(16, 185, 129, 0.2) !important;
+      box-shadow: 0 4px 20px -2px rgba(16, 185, 129, 0.08) !important;
+    }
+    html.light header#header nav a { color: #334155 !important; }
+    html.light header#header nav a:hover { color: #047857 !important; background-color: rgba(16, 185, 129, 0.1) !important; }
+
+    html.light .text-zinc-200, html.light .text-zinc-300 { color: #334155 !important; }
+    html.light .text-zinc-400 { color: #64748b !important; }
+    html.light .text-white { color: #0f172a !important; }
+
+    html.light .bg-clip-text {
+      background-image: linear-gradient(to right, #047857, #065f46, #0d9488) !important;
+      -webkit-background-clip: text !important;
+    }
+
+    html.light .bg-forest-990 {
+      background-color: #ffffff !important;
+      border-color: rgba(16, 185, 129, 0.25) !important;
+      box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.1) !important;
+    }
+    html.light .bg-forest-950 { background-color: #f0fdf4 !important; border-color: rgba(16, 185, 129, 0.2) !important; }
+    html.light .bg-forest-900 { background-color: rgba(255, 255, 255, 0.95) !important; border-color: rgba(16, 185, 129, 0.25) !important; }
+    html.light .border-forest-800, html.light .border-forest-850,
+    html.light .border-brand-900\/60, html.light .border-brand-900\/70,
+    html.light .border-brand-900\/80 { border-color: rgba(16, 185, 129, 0.2) !important; }
+    html.light .text-brand-300 { color: #047857 !important; }
+    html.light .text-brand-400 { color: #059669 !important; }
+
+    html.light #mobile-menu {
+      background-color: rgba(255, 255, 255, 0.98) !important;
+      border-top-color: rgba(16, 185, 129, 0.25) !important;
+      box-shadow: 0 15px 30px rgba(16, 185, 129, 0.1) !important;
+    }
+    html.light footer#footer {
+      background-color: rgba(240, 253, 244, 0.85) !important;
+      border-top-color: rgba(16, 185, 129, 0.22) !important;
+    }
+    html.light footer#footer p, html.light footer#footer a { color: #475569 !important; }
+    html.light #theme-toggle-btn {
+      background-color: #ffffff !important;
+      border-color: rgba(16, 185, 129, 0.35) !important;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.12) !important;
+    }
+    html.light #mobile-menu-btn {
+      background-color: #ffffff !important;
+      border-color: rgba(16, 185, 129, 0.3) !important;
+    }
+    html.light .skeleton {
+      background: linear-gradient(90deg, rgba(16,185,129,0.08) 25%, rgba(16,185,129,0.18) 50%, rgba(16,185,129,0.08) 75%) !important;
+      background-size: 600px 100% !important;
+    }
+  </style>
+</head>
+
+<body class="selection:bg-brand-500 selection:text-black min-h-screen">
+  <div id="root"></div>
+
+  <!-- React 18 Application Script with Modular Reusable Components -->
+  <script type="text/babel">
+    const { useState, useEffect, createContext, useContext } = React;
+
+    // ============================================================
+    // 1. DATA (პორტფოლიოს მონაცემები)
+    // ============================================================
+    const personalInfo = {
+      name: "რევაზ ძნელაძე",
+      role: "Full-Stack Engineer",
+      title: "Software Architect & Web Developer",
+      bio: "5+ წლიანი გამოცდილების მქონე Full-Stack დეველოპერი. სპეციალიზირებული ვარ თანამედროვე, მასშტაბირებადი ვებ-აპლიკაციების, მიკროსერვისებისა და მაღალმწარმოებლური ინტერფეისების შექმნაში React-ისა და Node.js-ის გამოყენებით.",
+      location: "თბილისი, საქართველო",
+      email: "revaz.dzneladze@example.com",
+      phone: "+995 599 12 34 56",
+      github: "https://github.com",
+      linkedin: "https://linkedin.com",
+    };
+
+    const navLinks = [
+      { id: "about", label: "ჩემ შესახებ", icon: "fa-regular fa-user", type: "hash" },
+      { id: "skills", label: "უნარები", icon: "fa-solid fa-bolt", type: "hash" },
+      { id: "experience", label: "გამოცდილება", icon: "fa-solid fa-briefcase", type: "hash" },
+      { id: "projects", label: "პროექტები", icon: "fa-solid fa-code-branch", type: "page", href: "index1.html" },
+      { id: "employees", label: "თანამშრომლები", icon: "fa-solid fa-users", type: "page", href: "employees.html" },
+      { id: "contact", label: "კონტაქტი", icon: "fa-regular fa-paper-plane", type: "hash" },
+    ];
+
+    const skillsData = [
+      {
+        category: "Frontend",
+        icon: "fa-brands fa-react",
+        description: "თანამედროვე, რესპონსიული და ინტერაქტიული სამომხმარებლო ინტერფეისები",
+        items: [
+          { name: "React / Next.js", level: "Senior", percent: 95 },
+          { name: "TypeScript / JavaScript", level: "Senior", percent: 92 },
+          { name: "Tailwind CSS / SCSS", level: "Expert", percent: 96 },
+          { name: "Redux Toolkit / Zustand", level: "Senior", percent: 90 },
+          { name: "HTML5 / CSS3 / Animations", level: "Expert", percent: 98 },
+        ],
+      },
+      {
+        category: "Backend",
+        icon: "fa-solid fa-server",
+        description: "სწრაფი, დაცული და მასშტაბირებადი სერვერული არქიტექტურა",
+        items: [
+          { name: "Node.js / Express / NestJS", level: "Senior", percent: 90 },
+          { name: "Python / FastAPI", level: "Middle+", percent: 82 },
+          { name: "RESTful APIs / GraphQL", level: "Senior", percent: 94 },
+          { name: "WebSockets / Real-time", level: "Middle+", percent: 85 },
+          { name: "Authentication / JWT / OAuth", level: "Senior", percent: 92 },
+        ],
+      },
+      {
+        category: "Databases & DevOps",
+        icon: "fa-solid fa-database",
+        description: "მონაცემთა ბაზების ოპტიმიზაცია და CI/CD დეპლოიმენტი",
+        items: [
+          { name: "PostgreSQL / Prisma ORM", level: "Senior", percent: 90 },
+          { name: "MongoDB / Redis Caching", level: "Senior", percent: 88 },
+          { name: "Docker / Containers", level: "Middle+", percent: 82 },
+          { name: "Git / GitHub Actions CI/CD", level: "Senior", percent: 92 },
+          { name: "Cloud (AWS / Vercel)", level: "Middle+", percent: 80 },
+        ],
+      },
+      {
+        category: "Tools & Methodologies",
+        icon: "fa-solid fa-toolbox",
+        description: "პროექტების მართვა, ტესტირება და ხარისხის კონტროლი",
+        items: [
+          { name: "Vite / Webpack", level: "Senior", percent: 92 },
+          { name: "Jest / Vitest / RTL", level: "Middle+", percent: 84 },
+          { name: "Agile / Scrum / Jira", level: "Senior", percent: 95 },
+          { name: "Figma UI/UX Implementation", level: "Senior", percent: 90 },
+          { name: "Clean Architecture & SOLID", level: "Expert", percent: 95 },
+        ],
+      },
+    ];
+
+    const experiencesData = [
+      {
+        id: 1,
+        role: "Lead Full-Stack Developer",
+        company: "Apex Tech Solutions",
+        period: "2023 - დღემდე",
+        type: "სრული განაკვეთი",
+        location: "თბილისი",
+        description: "პასუხისმგებელი ვარ ძირითადი SaaS პლატფორმის არქიტექტურაზე, გუნდის ტექნიკურ ხელმძღვანელობასა და მიკროსერვისების დიზაინზე.",
+        achievements: [
+          "პლატფორმის წარმადობა გაუმჯობესდა 42%-ით კოდის ოპტიმიზაციითა და Redis ქეშირებით",
+          "დანერგილია ავტომატური CI/CD pipeline GitHub Actions-ის მეშვეობით",
+          "5 დეველოპერისგან შემდგარი გუნდის მენტორინგი და კოდის მიმოხილვა",
+        ],
+        skills: ["React", "TypeScript", "Node.js", "PostgreSQL", "Docker", "AWS"],
+      },
+      {
+        id: 2,
+        role: "Senior Frontend Engineer",
+        company: "Digital Matrix Lab",
+        period: "2021 - 2023",
+        type: "სრული განაკვეთი",
+        location: "თბილისი / Remote",
+        description: "დიდი მასშტაბის ფინტექ და ელექტრონული კომერციის პორტალების Frontend არქიტექტურის შემუშავება.",
+        achievements: [
+          "შეიქმნა კომპონენტების უნიფიცირებული UI ბიბლიოთეკა (Design System)",
+          "Lighthouse Core Web Vitals მაჩვენებლები გაიზარდა 95+ ქულამდე",
+          "ინტეგრირებულია საერთაშორისო საგადახდო სისტემები (Stripe, Apple Pay)",
+        ],
+        skills: ["React", "Next.js", "Tailwind CSS", "Redux", "GraphQL"],
+      },
+      {
+        id: 3,
+        role: "Full-Stack Web Developer",
+        company: "Innovate Georgia",
+        period: "2019 - 2021",
+        type: "სრული განაკვეთი",
+        location: "თბილისი",
+        description: "ვებ-აპლიკაციების, CMS პლატფორმებისა და RESTful API-ების შექმნა სტარტაპებისთვის.",
+        achievements: [
+          "წარმატებით განხორციელდა 15+ პროექტის დეპლოი და მხარდაჭერა",
+          "მონაცემთა ბაზების რეორგანიზაცია და რესპონსიული დიზაინის დანერგვა",
+        ],
+        skills: ["JavaScript", "React", "Express.js", "MongoDB", "REST API"],
+      },
+    ];
+
+    const projectsData = [
+      {
+        id: 1,
+        title: "E-Commerce Cloud Platform",
+        subtitle: "ელექტრონული კომერციის პლატფორმა",
+        category: "Full-Stack",
+        description: "მაღალმწარმოებლური ონლაინ მაღაზია პროდუქციის ფილტრაციით, კალათით, Stripe გადახდების სისტემითა და ადმინ პანელით.",
+        status: "Production",
+        metrics: "4.9/5 რეიტინგი · 10k+ მომხმარებელი",
+        previewCode: "store.revaz.dev",
+        tags: ["React", "TypeScript", "Tailwind CSS", "Node.js", "Stripe API"],
+        githubUrl: "https://github.com",
+        liveUrl: "index1.html",
+        icon: "fa-solid fa-cart-shopping",
+      },
+      {
+        id: 2,
+        title: "TaskFlow Manager SaaS",
+        subtitle: "გუნდური ამოცანების მართვის სისტემა",
+        category: "Frontend",
+        description: "ინტერაქტიული Kanban დაფა Drag-and-Drop მხარდაჭერით, რეალურ დროში განახლებებითა და ანალიტიკით.",
+        status: "Live",
+        metrics: "Realtime WebSocket · Drag & Drop",
+        previewCode: "taskflow.revaz.dev",
+        tags: ["React", "Tailwind CSS", "Zustand", "WebSockets"],
+        githubUrl: "https://github.com",
+        liveUrl: "index1.html",
+        icon: "fa-solid fa-list-check",
+      },
+      {
+        id: 3,
+        title: "Cryptocurrency Analytics Hub",
+        subtitle: "კრიპტოვალუტის ანალიტიკის პლატფორმა",
+        category: "Fintech",
+        description: "კრიპტო ბაზრის რეალურ დროში მონიტორინგი, ინტერაქტიული Candlestick გრაფიკები და პორტფოლიოს ტრეკერი.",
+        status: "Production",
+        metrics: "Live Market API · 500+ Assets",
+        previewCode: "crypto.revaz.dev",
+        tags: ["React", "REST API", "Tailwind CSS", "ApexCharts"],
+        githubUrl: "https://github.com",
+        liveUrl: "index1.html",
+        icon: "fa-solid fa-chart-line",
+      },
+    ];
+
+    // ============================================================
+    // 2. THEME CONTEXT (მუქი / ნათელი თემის მართვა)
+    // ============================================================
+    const ThemeContext = createContext();
+
+    const ThemeProvider = ({ children }) => {
+      const [theme, setTheme] = useState(() => {
+        const saved = localStorage.getItem('theme');
+        return saved === 'light' ? 'light' : 'dark';
+      });
+
+      useEffect(() => {
+        const root = document.documentElement;
+        if (theme === 'light') {
+          root.classList.add('light');
+          root.classList.remove('dark');
+        } else {
+          root.classList.add('dark');
+          root.classList.remove('light');
+        }
+        localStorage.setItem('theme', theme);
+      }, [theme]);
+
+      const toggleTheme = () => {
+        setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
+      };
+
+      return (
+        <ThemeContext.Provider value={{ theme, toggleTheme, isDark: theme === 'dark' }}>
+          {children}
+        </ThemeContext.Provider>
+      );
+    };
+
+    const useTheme = () => useContext(ThemeContext);
+
+    // ============================================================
+    // 3. REUSABLE UI COMPONENTS (მრავალჯერადი საბაზისო კომპონენტები)
+    // ============================================================
+
+    // Reusable Card (Glassmorphism + Border glow)
+    const Card = ({ children, className = '', hover = true, as: Component = 'div', ...props }) => {
+      return (
+        <Component
+          className={`
+            relative rounded-2xl sm:rounded-3xl
+            bg-forest-900/75 dark:bg-forest-900/75
+            border border-brand-900/70 dark:border-brand-900/70
+            backdrop-blur-xl p-5 sm:p-6
+            transition-all duration-300
+            ${hover ? 'hover:border-brand-500/60 hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.25)] hover:bg-forest-850/80' : ''}
+            ${className}
+          `}
+          {...props}
+        >
+          {children}
+        </Component>
+      );
+    };
+
+    // Reusable Badge / Pill
+    const Badge = ({ children, variant = 'brand', size = 'md', icon, className = '', ...props }) => {
+      const variantStyles = {
+        brand: 'bg-brand-500/15 text-brand-300 border-brand-500/30',
+        teal: 'bg-teal-500/15 text-teal-300 border-teal-500/30',
+        emerald: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30',
+        amber: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
+        gray: 'bg-forest-950 border-forest-800 text-zinc-300',
+      };
+
+      const sizeStyles = {
+        sm: 'text-[10px] px-2 py-0.5 rounded-md gap-1',
+        md: 'text-xs px-2.5 py-1 rounded-lg gap-1.5',
+      };
+
+      return (
+        <span
+          className={`inline-flex items-center font-mono font-medium border ${variantStyles[variant] || variantStyles.brand} ${sizeStyles[size] || sizeStyles.md} ${className}`}
+          {...props}
+        >
+          {icon && <i className={`${icon} text-[0.85em]`}></i>}
+          <span>{children}</span>
+        </span>
+      );
+    };
+
+    // Reusable Button
+    const Button = ({
+      children,
+      variant = 'primary',
+      size = 'md',
+      icon,
+      href,
+      onClick,
+      disabled = false,
+      loading = false,
+      className = '',
+      type = 'button',
+      ...props
+    }) => {
+      const baseStyles = 'inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-500 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed';
+
+      const variants = {
+        primary: 'bg-gradient-to-r from-brand-500 to-teal-400 hover:from-brand-400 hover:to-teal-300 text-forest-990 font-bold shadow-md shadow-brand-500/30 hover:shadow-brand-500/50 hover:scale-[1.02] active:scale-[0.98]',
+        secondary: 'bg-forest-900/90 hover:bg-forest-850 text-zinc-200 hover:text-white border border-brand-800/60 hover:border-brand-500/60 shadow-sm',
+        outline: 'bg-transparent hover:bg-brand-500/10 text-brand-300 hover:text-brand-200 border border-brand-500/40 hover:border-brand-500',
+      };
+
+      const sizes = {
+        sm: 'text-xs px-3 py-1.5 gap-1.5',
+        md: 'text-sm px-4 py-2.5 gap-2',
+        lg: 'text-base px-6 py-3.5 gap-2.5 font-semibold',
+      };
+
+      const classes = `${baseStyles} ${variants[variant] || variants.primary} ${sizes[size] || sizes.md} ${className}`;
+
+      if (href) {
+        return (
+          <a href={href} className={classes} {...props}>
+            {loading ? <i className="fa-solid fa-spinner animate-spin text-xs"></i> : (icon && <i className={`${icon} text-xs`}></i>)}
+            <span>{children}</span>
+          </a>
+        );
+      }
+
+      return (
+        <button type={type} onClick={onClick} disabled={disabled || loading} className={classes} {...props}>
+          {loading ? <i className="fa-solid fa-spinner animate-spin text-xs"></i> : (icon && <i className={`${icon} text-xs`}></i>)}
+          <span>{children}</span>
+        </button>
+      );
+    };
+
+    // Reusable Section Header
+    const SectionHeader = ({ badge, badgeIcon, title, subtitle, action, className = '' }) => {
+      return (
+        <div className={`flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-brand-900/70 ${className}`}>
+          <div className="space-y-2 max-w-3xl">
+            {badge && (
+              <Badge variant="brand" icon={badgeIcon} className="uppercase font-semibold tracking-wider">
+                {badge}
+              </Badge>
+            )}
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white">
+              {title}
+            </h2>
+            {subtitle && (
+              <p className="text-zinc-300 text-xs sm:text-sm md:text-base leading-relaxed">
+                {subtitle}
+              </p>
+            )}
+          </div>
+          {action && <div className="flex-shrink-0">{action}</div>}
+        </div>
+      );
+    };
+
+    // Reusable Modal
+    const Modal = ({ isOpen, onClose, title, subtitle, children }) => {
+      useEffect(() => {
+        if (!isOpen) return;
+        const handleKeyDown = (e) => { if (e.key === 'Escape') onClose(); };
+        document.addEventListener('keydown', handleKeyDown);
+        document.body.style.overflow = 'hidden';
+        return () => {
+          document.removeEventListener('keydown', handleKeyDown);
+          document.body.style.overflow = '';
+        };
+      }, [isOpen, onClose]);
+
+      if (!isOpen) return null;
+
+      return (
+        <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-4 animate-fade-in" role="dialog" aria-modal="true">
+          <div onClick={onClose} className="absolute inset-0 bg-forest-990/80 backdrop-blur-sm transition-opacity" />
+          <div className="relative w-full max-w-lg bg-forest-900 border border-brand-900/80 rounded-2xl sm:rounded-3xl shadow-2xl max-h-[85vh] flex flex-col overflow-hidden backdrop-blur-2xl z-10 animate-fade-in-up">
+            <div className="flex items-center justify-between px-5 sm:px-6 py-4 border-b border-brand-900/70">
+              <div className="space-y-0.5">
+                <div className="flex items-center gap-2">
+                  <span className="w-7 h-7 rounded-lg bg-brand-500/20 border border-brand-500/30 flex items-center justify-center text-brand-400">
+                    <i className="fa-solid fa-list-check text-xs"></i>
+                  </span>
+                  <h3 className="text-base sm:text-lg font-bold text-white">{title}</h3>
+                </div>
+                {subtitle && <p className="text-xs text-brand-400 font-mono pl-9">{subtitle}</p>}
+              </div>
+              <button
+                onClick={onClose}
+                className="w-8 h-8 rounded-xl bg-forest-800 border border-brand-900/60 flex items-center justify-center text-zinc-400 hover:text-white hover:border-brand-500/50 transition-all cursor-pointer"
+              >
+                <i className="fa-solid fa-xmark text-sm"></i>
+              </button>
+            </div>
+            <div className="flex-1 overflow-y-auto p-5 sm:p-6 space-y-4">
+              {children}
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    // ============================================================
+    // 4. REUSABLE SPECIALIZED CARDS (სპეციალიზებული ქარდები)
+    // ============================================================
+
+    // Reusable SkillCard
+    const SkillCard = ({ category, icon, description, items }) => (
+      <Card className="flex flex-col justify-between group">
+        <div>
+          <div className="flex items-center gap-3.5 mb-3.5">
+            <div className="w-12 h-12 rounded-2xl bg-brand-500/15 border border-brand-500/30 flex items-center justify-center text-brand-300 group-hover:scale-105 group-hover:border-brand-400 group-hover:bg-brand-500/25 transition-all duration-300 shadow-md shadow-brand-500/10">
+              <i className={`${icon} text-xl`}></i>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-white group-hover:text-brand-300 transition-colors">
+                {category}
+              </h3>
+              <span className="text-[11px] text-zinc-400 font-mono">{items.length} ტექნოლოგია</span>
+            </div>
+          </div>
+          <p className="text-xs text-zinc-300 mb-4 leading-relaxed">{description}</p>
+          <div className="space-y-2.5">
+            {items.map((skill, index) => (
+              <div key={index} className="space-y-1">
+                <div className="flex justify-between items-center text-xs font-mono">
+                  <span className="text-zinc-200 font-medium">{skill.name}</span>
+                  <span className="text-brand-400 text-[11px]">{skill.level}</span>
+                </div>
+                <div className="w-full h-1.5 rounded-full bg-forest-950 border border-brand-900/60 overflow-hidden">
+                  <div className="h-full rounded-full bg-gradient-to-r from-brand-500 to-teal-400" style={{ width: `${skill.percent}%` }} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="pt-4 mt-4 border-t border-brand-900/60 flex items-center justify-between text-[11px] font-mono text-zinc-400">
+          <span className="text-brand-300/80">კომპეტენცია</span>
+          <Badge variant="teal" size="sm">Verified Stack</Badge>
+        </div>
+      </Card>
+    );
+
+    // Reusable ProjectCard
+    const ProjectCard = ({ project }) => (
+      <Card className="flex flex-col justify-between group">
+        <div className="space-y-4">
+          <div className="rounded-2xl bg-forest-990 border border-forest-850 p-3.5 space-y-3 shadow-inner group-hover:border-brand-500/40 transition-colors">
+            <div className="flex items-center justify-between text-[11px] text-brand-300/80 font-mono">
+              <div className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-brand-500/80"></span>
+              </div>
+              <span className="text-brand-400/60 font-mono text-[10px]">{project.previewCode}</span>
+              <span className="text-brand-400"><i className={project.icon}></i></span>
+            </div>
+            <div className="rounded-xl bg-gradient-to-br from-forest-850 to-forest-950 p-3 border border-brand-500/25 flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-lg bg-brand-500/25 border border-brand-500/40 flex items-center justify-center text-brand-300">
+                  <i className={`${project.icon} text-sm`}></i>
+                </div>
+                <div className="min-w-0">
+                  <span className="block text-xs font-bold text-white leading-tight truncate">{project.title}</span>
+                  <span className="text-[10px] text-brand-300 font-mono truncate block">{project.subtitle}</span>
+                </div>
+              </div>
+              <span className="text-[10px] px-2 py-0.5 rounded bg-brand-500 text-forest-990 font-bold flex items-center gap-1 shadow-sm flex-shrink-0">
+                <i className="fa-solid fa-bolt text-[9px]"></i> Live
+              </span>
+            </div>
+            <div className="flex items-center justify-between text-[10px] text-zinc-400 font-mono pt-1">
+              <span className="flex items-center gap-1 text-brand-400">
+                <span className="w-1.5 h-1.5 rounded-full bg-brand-400 animate-pulse"></span>
+                {project.category}
+              </span>
+              <span className="text-amber-400 font-semibold">{project.metrics}</span>
+            </div>
+          </div>
+          <div className="flex items-center justify-between pt-1">
+            <span className="w-10 h-10 rounded-xl bg-brand-500/20 border border-brand-500/35 flex items-center justify-center text-brand-300 group-hover:bg-brand-500 group-hover:text-forest-990 transition-all duration-300">
+              <i className={`${project.icon} text-lg`}></i>
+            </span>
+            <Badge variant="brand" size="sm">{project.status}</Badge>
+          </div>
+          <div>
+            <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-brand-300 transition-colors leading-snug">
+              {project.title}
+            </h3>
+            <p className="text-zinc-300 text-xs sm:text-sm leading-relaxed mt-2 line-clamp-3">
+              {project.description}
+            </p>
+          </div>
+          <div className="pt-2 border-t border-forest-800 space-y-2">
+            <strong className="block text-[11px] uppercase tracking-wider text-brand-300/80 font-semibold font-mono">
+              ტექნოლოგიები:
+            </strong>
+            <div className="flex flex-wrap gap-1.5">
+              {project.tags.map((tag, i) => (
+                <Badge key={i} variant="gray" size="sm">{tag}</Badge>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="pt-5 mt-5 border-t border-forest-800 flex items-center justify-between gap-3">
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 py-2 px-3 rounded-xl bg-forest-950 border border-brand-900/60 hover:border-brand-500/60 hover:bg-forest-900 text-zinc-300 hover:text-white text-xs font-mono font-medium transition-all flex items-center justify-center gap-2"
+          >
+            <i className="fa-brands fa-github text-sm text-brand-400"></i>
+            <span>Source</span>
+          </a>
+          <a
+            href={project.liveUrl}
+            className="flex-1 py-2 px-3 rounded-xl bg-gradient-to-r from-brand-500 to-teal-400 hover:from-brand-400 hover:to-teal-300 text-forest-990 font-bold text-xs transition-all flex items-center justify-center gap-2 shadow-sm shadow-brand-500/20"
+          >
+            <span>Live Demo</span>
+            <i className="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          </a>
+        </div>
+      </Card>
+    );
+
+    // Reusable ExperienceCard
+    const ExperienceCard = ({ experience }) => (
+      <Card className="relative pl-6 sm:pl-8 group">
+        <div className="absolute left-0 top-7 w-3.5 h-3.5 rounded-full bg-brand-400 border-2 border-forest-900 shadow-md shadow-brand-500/50 group-hover:scale-125 transition-transform" />
+        <div className="space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <Badge variant="brand" icon="fa-regular fa-calendar" size="sm">
+              {experience.period}
+            </Badge>
+            <span className="text-xs font-mono text-zinc-400 flex items-center gap-1.5">
+              <i className="fa-solid fa-location-dot text-brand-400 text-[10px]"></i>
+              {experience.location} · {experience.type}
+            </span>
+          </div>
+          <div>
+            <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-brand-300 transition-colors">
+              {experience.role}
+            </h3>
+            <p className="text-sm font-semibold text-brand-400 font-mono mt-0.5">{experience.company}</p>
+          </div>
+          <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">{experience.description}</p>
+          <div className="space-y-1.5 pt-2 border-t border-brand-900/60">
+            <strong className="block text-[11px] uppercase tracking-wider text-brand-300/80 font-mono">
+              ძირითადი მიღწევები:
+            </strong>
+            <ul className="space-y-1 text-xs text-zinc-300">
+              {experience.achievements.map((item, i) => (
+                <li key={i} className="flex items-start gap-2">
+                  <i className="fa-solid fa-check text-brand-400 text-[10px] mt-1 flex-shrink-0"></i>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="pt-2 flex flex-wrap gap-1.5">
+            {experience.skills.map((skill, i) => (
+              <Badge key={i} variant="gray" size="sm">{skill}</Badge>
+            ))}
+          </div>
+        </div>
+      </Card>
+    );
+
+    // Reusable EmployeeCard
+    const EmployeeCard = ({ user, index = 0, onViewTodos }) => {
+      const avatarPalettes = [
+        'from-brand-500 to-teal-400',
+        'from-teal-400 to-cyan-400',
+        'from-emerald-400 to-brand-300',
+        'from-brand-300 to-brand-500',
+        'from-cyan-400 to-brand-400',
+      ];
+      const palette = avatarPalettes[index % avatarPalettes.length];
+      const initials = user.name ? user.name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase() : 'RD';
+
+      return (
+        <Card className="flex flex-col justify-between group">
+          <div>
+            <div className="flex items-center gap-3.5 mb-4">
+              <div className="relative flex-shrink-0">
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${palette} flex items-center justify-center font-mono font-black text-lg text-forest-990 shadow-md`}>
+                  {initials}
+                </div>
+                <span className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-brand-400 border-2 border-forest-900 flex items-center justify-center">
+                  <span className="w-1.5 h-1.5 rounded-full bg-forest-990 animate-ping absolute"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-forest-990 relative"></span>
+                </span>
+              </div>
+              <div className="min-w-0">
+                <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-brand-300 transition-colors leading-tight truncate">
+                  {user.name}
+                </h3>
+                <p className="text-[11px] text-brand-400 font-mono truncate">@{user.username}</p>
+              </div>
+            </div>
+            <div className="space-y-2 text-xs">
+              <div className="flex items-center gap-2 text-zinc-300">
+                <span className="w-5 h-5 rounded-md bg-brand-500/15 flex items-center justify-center flex-shrink-0">
+                  <i className="fa-regular fa-envelope text-brand-400 text-[10px]"></i>
+                </span>
+                <span className="truncate font-mono">{user.email}</span>
+              </div>
+              <div className="flex items-center gap-2 text-zinc-300">
+                <span className="w-5 h-5 rounded-md bg-teal-500/15 flex items-center justify-center flex-shrink-0">
+                  <i className="fa-solid fa-phone text-teal-400 text-[10px]"></i>
+                </span>
+                <span className="truncate font-mono">{user.phone}</span>
+              </div>
+              <div className="flex items-center gap-2 text-zinc-300">
+                <span className="w-5 h-5 rounded-md bg-emerald-500/15 flex items-center justify-center flex-shrink-0">
+                  <i className="fa-solid fa-globe text-emerald-400 text-[10px]"></i>
+                </span>
+                <a href={`https://${user.website}`} target="_blank" rel="noopener noreferrer" className="truncate font-mono text-brand-300 hover:underline">
+                  {user.website}
+                </a>
+              </div>
+              <div className="flex items-center gap-2 text-zinc-300">
+                <span className="w-5 h-5 rounded-md bg-brand-500/15 flex items-center justify-center flex-shrink-0">
+                  <i className="fa-solid fa-location-dot text-brand-400 text-[10px]"></i>
+                </span>
+                <span className="truncate">{user.address?.city}, {user.address?.street}</span>
+              </div>
+              <div className="flex items-center gap-2 text-zinc-300">
+                <span className="w-5 h-5 rounded-md bg-amber-500/15 flex items-center justify-center flex-shrink-0">
+                  <i className="fa-solid fa-building text-amber-400 text-[10px]"></i>
+                </span>
+                <span className="truncate font-semibold text-zinc-200">{user.company?.name}</span>
+              </div>
+            </div>
+            {user.company?.catchPhrase && (
+              <div className="mt-3 px-3 py-2 rounded-xl bg-forest-950/80 border border-brand-900/50 text-[11px] text-zinc-400 italic leading-snug line-clamp-2">
+                "{user.company.catchPhrase}"
+              </div>
+            )}
+          </div>
+          <Button variant="outline" size="sm" className="mt-4 w-full" icon="fa-solid fa-list-check" onClick={() => onViewTodos(user)}>
+            დავალებების ნახვა
+          </Button>
+        </Card>
+      );
+    };
+
+    // ============================================================
+    // 5. MAIN SECTION COMPONENTS (მთავარი სექციები)
+    // ============================================================
+
+    // Header & Navigation with Mobile Burger and Page Links
+    const Navbar = () => {
+      const { toggleTheme, isDark } = useTheme();
+      const [isOpen, setIsOpen] = useState(false);
+      const [activeSection, setActiveSection] = useState('about');
+
+      useEffect(() => {
+        const handleResize = () => { if (window.innerWidth >= 768) setIsOpen(false); };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+      }, []);
+
+      const handleLinkClick = (link) => {
+        setIsOpen(false);
+        if (link.type === 'hash') {
+          setActiveSection(link.id);
+          const el = document.getElementById(link.id);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+      };
+
+      return (
+        <header id="header" className="sticky top-0 z-50 backdrop-blur-2xl bg-forest-990/85 border-b border-brand-900/60 shadow-lg shadow-forest-990/50 transition-all duration-300">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16 sm:h-20 gap-4">
+
+              {/* Logo / Monogram */}
+              <div className="flex-shrink-0">
+                <a href="#about" onClick={(e) => { e.preventDefault(); handleLinkClick({ type: 'hash', id: 'about' }); }} className="group inline-flex items-center gap-3">
+                  <span className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/25 via-teal-500/15 to-transparent border border-brand-500/50 flex items-center justify-center font-mono font-bold text-brand-300 group-hover:scale-105 group-hover:border-brand-400 transition-all shadow-md shadow-brand-500/20">
+                    &lt;R/&gt;
+                  </span>
+                  <div className="flex flex-col">
+                    <span className="text-lg sm:text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-zinc-100 to-brand-300 bg-clip-text text-transparent group-hover:text-brand-400 transition-colors">
+                      რევაზ ძნელაძე
+                    </span>
+                    <span className="text-[11px] text-brand-300/80 flex items-center gap-1.5 font-mono">
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+                      </span>
+                      <span>Full-Stack Engineer</span>
+                    </span>
+                  </div>
+                </a>
+              </div>
+
+              {/* Navigation Items + Theme Toggle + Burger */}
+              <div className="flex items-center gap-2 sm:gap-3">
+                <nav className="hidden md:flex items-center gap-1.5 text-sm font-medium" aria-label="დესკტოპ ნავიგაცია">
+                  {navLinks.map((link) => {
+                    const isActive = activeSection === link.id;
+                    const isContact = link.id === 'contact';
+                    const isPage = link.type === 'page';
+
+                    if (isContact) {
+                      return (
+                        <a
+                          key={link.id}
+                          href="#contact"
+                          onClick={(e) => { e.preventDefault(); handleLinkClick(link); }}
+                          className="ml-1 px-3.5 py-2 rounded-xl bg-gradient-to-r from-brand-500 to-teal-400 hover:from-brand-400 hover:to-teal-300 text-forest-990 font-bold shadow-md shadow-brand-500/30 transition-all duration-200 flex items-center gap-1.5"
+                        >
+                          <i className={`${link.icon} text-xs`}></i>
+                          <span>{link.label}</span>
+                        </a>
+                      );
+                    }
+
+                    if (isPage) {
+                      return (
+                        <a
+                          key={link.id}
+                          href={link.href}
+                          className="px-3.5 py-2 rounded-xl text-brand-300 hover:text-white bg-forest-900/90 border border-brand-800/60 hover:bg-forest-850 hover:border-brand-500/60 transition-all duration-200 flex items-center gap-1.5 shadow-sm"
+                        >
+                          <i className={`${link.icon} text-xs text-brand-400`}></i>
+                          <span>{link.label}</span>
+                        </a>
+                      );
+                    }
+
+                    return (
+                      <a
+                        key={link.id}
+                        href={`#${link.id}`}
+                        onClick={(e) => { e.preventDefault(); handleLinkClick(link); }}
+                        className={`px-3 py-2 rounded-xl transition-all duration-200 ${isActive ? 'text-brand-300 bg-forest-900/90 border border-brand-800/60' : 'text-zinc-300 hover:text-white hover:bg-forest-900/80 hover:border-brand-500/30 border border-transparent'}`}
+                      >
+                        {link.label}
+                      </a>
+                    );
+                  })}
+                </nav>
+
+                {/* Theme Toggle Button */}
+                <button
+                  id="theme-toggle-btn"
+                  type="button"
+                  onClick={toggleTheme}
+                  className="p-2.5 rounded-xl border border-brand-900/80 bg-forest-900/90 hover:border-brand-500/60 hover:bg-forest-850 transition-all duration-200 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-brand-500 shadow-sm cursor-pointer"
+                  aria-label="თემის შეცვლა (Light / Dark)"
+                >
+                  <i className={`fa-solid ${isDark ? 'fa-sun text-amber-400' : 'fa-moon text-emerald-800'} text-sm`}></i>
+                </button>
+
+                {/* Mobile Burger Menu Button */}
+                <button
+                  id="mobile-menu-btn"
+                  type="button"
+                  onClick={() => setIsOpen(prev => !prev)}
+                  className="md:hidden relative p-2.5 rounded-xl bg-forest-900/90 border border-brand-900/80 text-brand-300 hover:text-white hover:border-brand-500/60 hover:bg-forest-850 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all cursor-pointer"
+                  aria-label="მენიუს გახსნა/დახურვა"
+                  aria-expanded={isOpen}
+                >
+                  <div className="w-6 h-5 flex flex-col justify-between items-center">
+                    <span className={`w-6 h-0.5 bg-brand-400 rounded-full transition-all duration-300 ${isOpen ? 'transform translate-y-[9px] rotate-45' : ''}`}></span>
+                    <span className={`w-6 h-0.5 bg-brand-400 rounded-full transition-all duration-300 ${isOpen ? 'opacity-0 scale-x-0' : ''}`}></span>
+                    <span className={`w-6 h-0.5 bg-brand-400 rounded-full transition-all duration-300 ${isOpen ? 'transform -translate-y-[9px] -rotate-45' : ''}`}></span>
+                  </div>
+                </button>
+
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Dropdown Menu */}
+          {isOpen && (
+            <div id="mobile-menu" className="md:hidden overflow-hidden border-t border-brand-900/80 bg-forest-990/95 backdrop-blur-2xl px-4 py-5 shadow-2xl animate-fade-in">
+              <nav className="flex flex-col gap-2" aria-label="მობილური ნავიგაცია">
+                {navLinks.map((link) => {
+                  const isContact = link.id === 'contact';
+                  const isPage = link.type === 'page';
+
+                  if (isContact) {
+                    return (
+                      <a
+                        key={link.id}
+                        href="#contact"
+                        onClick={(e) => { e.preventDefault(); handleLinkClick(link); }}
+                        className="mt-2 flex items-center justify-center gap-2.5 px-4 py-3.5 rounded-xl bg-gradient-to-r from-brand-500 to-teal-400 text-forest-990 font-bold text-base shadow-lg shadow-brand-500/30 transition-all"
+                      >
+                        <i className={`${link.icon} text-sm`}></i>
+                        <span>{link.label}</span>
+                      </a>
+                    );
+                  }
+
+                  return (
+                    <a
+                      key={link.id}
+                      href={isPage ? link.href : `#${link.id}`}
+                      onClick={isPage ? undefined : (e) => { e.preventDefault(); handleLinkClick(link); }}
+                      className="flex items-center gap-3 px-4 py-3 rounded-xl text-zinc-200 hover:text-white hover:bg-forest-900/90 border border-transparent hover:border-brand-900 transition-all"
+                    >
+                      <span className="w-8 h-8 rounded-lg bg-brand-500/15 border border-brand-500/25 flex items-center justify-center text-brand-400">
+                        <i className={`${link.icon} text-sm`}></i>
+                      </span>
+                      <span className="font-medium text-base">{link.label}</span>
+                      {isPage && (
+                        <span className="ml-auto text-xs px-2 py-0.5 rounded-full bg-brand-500/20 text-brand-300 font-mono">გვერდი</span>
+                      )}
+                    </a>
+                  );
+                })}
+
+                <div className="mt-4 pt-4 border-t border-brand-900/80 flex items-center justify-around text-zinc-400 text-sm">
+                  <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="hover:text-brand-300 transition-colors flex items-center gap-2 py-1">
+                    <i className="fa-brands fa-github text-base"></i>
+                    <span>GitHub</span>
+                  </a>
+                  <span className="text-brand-900">|</span>
+                  <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-brand-300 transition-colors flex items-center gap-2 py-1">
+                    <i className="fa-brands fa-linkedin text-base"></i>
+                    <span>LinkedIn</span>
+                  </a>
+                </div>
+              </nav>
+            </div>
+          )}
+        </header>
+      );
+    };
+
+    // Hero Section
+    const Hero = () => (
+      <section id="about" className="scroll-mt-24">
+        <div className="relative bg-gradient-to-b from-forest-850/90 via-forest-900/80 to-forest-950/95 border border-brand-500/30 rounded-3xl p-5 sm:p-10 lg:p-12 shadow-[0_0_50px_-15px_rgba(16,185,129,0.25)] backdrop-blur-2xl overflow-hidden animate-border-glow">
+          <div className="absolute -top-24 -right-24 w-80 h-80 bg-brand-500/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-teal-500/20 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 relative z-10">
+            {/* Terminal Card */}
+            <div className="w-full max-w-sm sm:max-w-md lg:max-w-xs flex-shrink-0">
+              <div className="relative group">
+                <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-brand-400 via-teal-400 to-emerald-500 opacity-50 blur-lg group-hover:opacity-85 transition duration-500" />
+                <div className="relative rounded-2xl bg-forest-990 border border-brand-500/40 p-5 shadow-2xl backdrop-blur-xl">
+                  <div className="flex items-center justify-between pb-3.5 mb-3.5 border-b border-forest-800 font-mono text-[11px]">
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-3 h-3 rounded-full bg-rose-500/80"></span>
+                      <span className="w-3 h-3 rounded-full bg-amber-500/80"></span>
+                      <span className="w-3 h-3 rounded-full bg-brand-500/80"></span>
+                    </div>
+                    <span className="text-brand-300 bg-forest-900 px-2 py-0.5 rounded border border-brand-900/80 font-mono">
+                      revaz.dev ~ zsh
+                    </span>
+                  </div>
+
+                  <div className="flex flex-col items-center text-center my-2">
+                    <div className="relative mb-3">
+                      <div className="absolute -inset-1 rounded-2xl bg-gradient-to-tr from-brand-400 via-teal-400 to-emerald-500 blur-sm opacity-80 group-hover:opacity-100 transition duration-300"></div>
+                      <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-gradient-to-br from-forest-900 via-forest-950 to-forest-900 border-2 border-brand-400/60 flex flex-col items-center justify-center shadow-inner overflow-hidden">
+                        <div className="absolute inset-0 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:12px_12px] opacity-30"></div>
+                        <span className="relative font-mono font-black text-2xl sm:text-3xl tracking-tight bg-gradient-to-r from-brand-200 via-white to-teal-200 bg-clip-text text-transparent">
+                          &lt;RD/&gt;
+                        </span>
+                        <span className="relative text-[9px] font-mono tracking-widest text-brand-300 uppercase mt-0.5">
+                          Architect
+                        </span>
+                      </div>
+                      <div className="absolute -bottom-1.5 -right-1.5 bg-forest-950 border border-brand-400/50 rounded-full px-2 py-0.5 flex items-center gap-1 shadow-md">
+                        <span className="w-2 h-2 rounded-full bg-brand-400 animate-ping"></span>
+                        <span className="text-[10px] font-mono font-medium text-brand-300">Live</span>
+                      </div>
+                    </div>
+
+                    <h3 className="text-base font-bold text-white tracking-wide">{personalInfo.name}</h3>
+                    <p className="text-xs text-brand-400 font-mono mt-0.5">@revaz · Software Engineer</p>
+                  </div>
+
+                  <div className="space-y-1.5 pt-3 border-t border-forest-800 font-mono text-[11px] text-zinc-300">
+                    <div className="flex justify-between">
+                      <span className="text-zinc-500">role:</span>
+                      <span className="text-brand-300 font-semibold">{personalInfo.role}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-zinc-500">experience:</span>
+                      <span className="text-teal-300">5+ Years</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-zinc-500">location:</span>
+                      <span className="text-zinc-300">{personalInfo.location}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Hero Text & Buttons */}
+            <div className="flex-1 space-y-5 text-center lg:text-left">
+              <div className="inline-flex items-center gap-2">
+                <Badge variant="brand" icon="fa-solid fa-code">Full-Stack Architecture</Badge>
+                <Badge variant="emerald" icon="fa-regular fa-circle-dot">Open to Work</Badge>
+              </div>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                გამარჯობა, მე ვარ{' '}
+                <span className="bg-gradient-to-r from-brand-300 via-teal-300 to-emerald-400 bg-clip-text text-transparent">
+                  {personalInfo.name}
+                </span>
+              </h1>
+              <p className="text-sm sm:text-base md:text-lg text-zinc-300 leading-relaxed max-w-2xl">
+                {personalInfo.bio}
+              </p>
+              <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+                <Button variant="primary" size="lg" href="#contact" icon="fa-regular fa-paper-plane">
+                  დამიკავშირდით
+                </Button>
+                <Button variant="secondary" size="lg" href="index1.html" icon="fa-solid fa-layer-group">
+                  პროექტები (index1.html)
+                </Button>
+                <Button variant="outline" size="lg" href="employees.html" icon="fa-solid fa-users">
+                  თანამშრომლები (employees.html)
+                </Button>
+              </div>
+              <div className="pt-4 border-t border-brand-900/60 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs font-mono text-zinc-400">
+                <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="hover:text-brand-300 flex items-center gap-1.5 transition-colors">
+                  <i className="fa-brands fa-github text-sm"></i>
+                  <span>github.com</span>
+                </a>
+                <span className="text-brand-900">|</span>
+                <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-brand-300 flex items-center gap-1.5 transition-colors">
+                  <i className="fa-brands fa-linkedin text-sm"></i>
+                  <span>linkedin.com</span>
+                </a>
+                <span className="text-brand-900">|</span>
+                <span className="flex items-center gap-1.5 text-brand-300">
+                  <i className="fa-regular fa-envelope text-sm"></i>
+                  <span>{personalInfo.email}</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+
+    // Skills Section
+    const Skills = () => (
+      <section id="skills" className="scroll-mt-24 space-y-8">
+        <SectionHeader
+          badge="ტექნოლოგიური სტეკი"
+          badgeIcon="fa-solid fa-bolt"
+          title="უნარები & ტექნოლოგიები"
+          subtitle="ჩემი ძირითადი ინსტრუმენტები და ტექნოლოგიური გამოცდილება თანამედროვე ციფრული პროდუქტების ასაგებად:"
+        />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {skillsData.map((skill, idx) => (
+            <SkillCard key={idx} category={skill.category} icon={skill.icon} description={skill.description} items={skill.items} />
+          ))}
+        </div>
+      </section>
+    );
+
+    // Projects Section
+    const Projects = () => {
+      const [filter, setFilter] = useState('ყველა');
+      const categories = ['ყველა', 'Full-Stack', 'Frontend', 'Fintech'];
+      const filtered = filter === 'ყველა' ? projectsData : projectsData.filter(p => p.category === filter);
+
+      return (
+        <section id="projects" className="scroll-mt-24 space-y-8">
+          <SectionHeader
+            badge="ნამუშევრების კატალოგი"
+            badgeIcon="fa-solid fa-code-branch"
+            title="გამორჩეული პროექტები"
+            subtitle="შესრულებული ვებ-აპლიკაციები, SaaS პლატფორმები და ციფრული გადაწყვეტები:"
+            action={
+              <div className="flex items-center gap-3">
+                <div className="flex flex-wrap gap-1.5 p-1 rounded-2xl bg-forest-990 border border-brand-900/60">
+                  {categories.map((cat) => (
+                    <button
+                      key={cat}
+                      type="button"
+                      onClick={() => setFilter(cat)}
+                      className={`px-3 py-1.5 rounded-xl text-xs font-mono font-medium transition-all cursor-pointer ${filter === cat ? 'bg-brand-500 text-forest-990 font-bold shadow-sm' : 'text-zinc-400 hover:text-white hover:bg-forest-900'}`}
+                    >
+                      {cat}
+                    </button>
+                  ))}
+                </div>
+                <a
+                  href="index1.html"
+                  className="px-3 py-2 rounded-xl bg-forest-900 border border-brand-800/60 hover:border-brand-500/60 text-brand-300 text-xs font-mono flex items-center gap-1.5 transition-all shadow-sm"
+                >
+                  <span>სრული გვერდი</span>
+                  <i className="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+              </div>
+            }
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {filtered.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+        </section>
+      );
+    };
+
+    // Experience Section
+    const Experience = () => (
+      <section id="experience" className="scroll-mt-24 space-y-8">
+        <SectionHeader
+          badge="კარიერული გზა"
+          badgeIcon="fa-solid fa-briefcase"
+          title="სამუშაო გამოცდილება"
+          subtitle="ჩემი პროფესიული განვითარების ეტაპები, წამყვანი პოზიციები და შესრულებული ამოცანები:"
+        />
+        <div className="relative border-l-2 border-brand-900/60 ml-2 sm:ml-4 pl-4 sm:pl-8 space-y-6 sm:space-y-8">
+          {experiencesData.map((exp) => (
+            <ExperienceCard key={exp.id} experience={exp} />
+          ))}
+        </div>
+      </section>
+    );
+
+    // Employees Section with API Integration & Todo Modal
+    const Employees = () => {
+      const [users, setUsers] = useState([]);
+      const [loading, setLoading] = useState(true);
+      const [error, setError] = useState(null);
+      const [search, setSearch] = useState('');
+
+      const [selectedUser, setSelectedUser] = useState(null);
+      const [todos, setTodos] = useState([]);
+      const [loadingTodos, setLoadingTodos] = useState(false);
+      const [todoError, setTodoError] = useState(null);
+
+      const fetchUsers = () => {
+        setLoading(true);
+        setError(null);
+        fetch('https://jsonplaceholder.typicode.com/users')
+          .then((res) => {
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            return res.json();
+          })
+          .then((data) => {
+            setUsers(data);
+            setLoading(false);
+          })
+          .catch((err) => {
+            setError(err.message);
+            setLoading(false);
+          });
+      };
+
+      useEffect(() => {
+        fetchUsers();
+      }, []);
+
+      const handleOpenTodos = (user) => {
+        setSelectedUser(user);
+        setLoadingTodos(true);
+        setTodoError(null);
+        setTodos([]);
+        fetch(`https://jsonplaceholder.typicode.com/todos?userId=${user.id}`)
+          .then((res) => {
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            return res.json();
+          })
+          .then((data) => {
+            setTodos(data);
+            setLoadingTodos(false);
+          })
+          .catch((err) => {
+            setTodoError(err.message);
+            setLoadingTodos(false);
+          });
+      };
+
+      const filteredUsers = users.filter((u) => {
+        const q = search.toLowerCase().trim();
+        if (!q) return true;
+        return (
+          u.name.toLowerCase().includes(q) ||
+          u.username.toLowerCase().includes(q) ||
+          u.email.toLowerCase().includes(q) ||
+          u.company?.name.toLowerCase().includes(q) ||
+          u.address?.city.toLowerCase().includes(q)
+        );
+      });
+
+      const companiesCount = new Set(users.map((u) => u.company?.name)).size;
+      const citiesCount = new Set(users.map((u) => u.address?.city)).size;
+      const completedTodos = todos.filter((t) => t.completed).length;
+
+      return (
+        <section id="employees" className="scroll-mt-24 space-y-8">
+          <SectionHeader
+            badge="გუნდის წევრები (API)"
+            badgeIcon="fa-solid fa-users"
+            title="თანამშრომლები"
+            subtitle="გუნდის 10 წევრი — მონაცემები იტვირთება JSONPlaceholder API-დან:"
+            action={
+              <div className="flex items-center gap-3">
+                <div className="relative">
+                  <i className="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-brand-400 text-xs"></i>
+                  <input
+                    type="text"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="ძიება..."
+                    className="w-full sm:w-52 pl-9 pr-8 py-2 rounded-xl bg-forest-900/90 border border-brand-900/70 text-zinc-200 placeholder-zinc-500 text-sm font-mono focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all"
+                  />
+                  {search && (
+                    <button type="button" onClick={() => setSearch('')} className="absolute right-2.5 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white text-xs">
+                      <i className="fa-solid fa-xmark"></i>
+                    </button>
+                  )}
+                </div>
+                <a
+                  href="employees.html"
+                  className="px-3 py-2 rounded-xl bg-forest-900 border border-brand-800/60 hover:border-brand-500/60 text-brand-300 text-xs font-mono flex items-center gap-1.5 transition-all shadow-sm"
+                >
+                  <span>სრული გვერდი</span>
+                  <i className="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+              </div>
+            }
+          />
+
+          {!loading && !error && users.length > 0 && (
+            <div className="grid grid-cols-3 gap-3 sm:gap-4">
+              <div className="bg-forest-900/75 border border-brand-900/70 rounded-2xl p-3 sm:p-4 text-center backdrop-blur-xl">
+                <div className="text-xl sm:text-2xl font-black font-mono text-brand-300">{users.length}</div>
+                <div className="text-xs text-zinc-400 mt-0.5">სულ წევრი</div>
+              </div>
+              <div className="bg-forest-900/75 border border-brand-900/70 rounded-2xl p-3 sm:p-4 text-center backdrop-blur-xl">
+                <div className="text-xl sm:text-2xl font-black font-mono text-teal-300">{companiesCount}</div>
+                <div className="text-xs text-zinc-400 mt-0.5">კომპანია</div>
+              </div>
+              <div className="bg-forest-900/75 border border-brand-900/70 rounded-2xl p-3 sm:p-4 text-center backdrop-blur-xl">
+                <div className="text-xl sm:text-2xl font-black font-mono text-emerald-300">{citiesCount}</div>
+                <div className="text-xs text-zinc-400 mt-0.5">ქალაქი</div>
+              </div>
+            </div>
+          )}
+
+          {loading && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className="rounded-2xl border border-brand-900/40 p-5 space-y-3 backdrop-blur-xl bg-forest-900/50">
+                  <div className="flex items-center gap-3">
+                    <div className="skeleton w-12 h-12 rounded-xl"></div>
+                    <div className="flex-1 space-y-2">
+                      <div className="skeleton h-4 rounded-lg w-3/4"></div>
+                      <div className="skeleton h-3 rounded-lg w-1/2"></div>
+                    </div>
+                  </div>
+                  <div className="skeleton h-3 rounded-lg w-full"></div>
+                  <div className="skeleton h-3 rounded-lg w-5/6"></div>
+                  <div className="skeleton h-8 rounded-xl w-full mt-3"></div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {error && !loading && (
+            <div className="flex flex-col items-center justify-center py-16 text-center space-y-4">
+              <div className="w-16 h-16 rounded-2xl bg-rose-500/15 border border-rose-500/30 flex items-center justify-center text-rose-400 text-2xl">
+                <i className="fa-solid fa-triangle-exclamation"></i>
+              </div>
+              <h3 className="text-lg font-bold text-white">მონაცემები ვერ ჩაიტვირთა</h3>
+              <p className="text-zinc-400 text-sm max-w-sm">API კავშირის შეცდომა: {error}</p>
+              <Button variant="primary" icon="fa-solid fa-rotate-right" onClick={fetchUsers}>
+                ხელახლა ცდა
+              </Button>
+            </div>
+          )}
+
+          {!loading && !error && filteredUsers.length > 0 && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+              {filteredUsers.map((user, idx) => (
+                <EmployeeCard key={user.id} user={user} index={idx} onViewTodos={handleOpenTodos} />
+              ))}
+            </div>
+          )}
+
+          <Modal
+            isOpen={Boolean(selectedUser)}
+            onClose={() => setSelectedUser(null)}
+            title={selectedUser ? `${selectedUser.name} — დავალებები` : ''}
+            subtitle={selectedUser ? `GET /todos?userId=${selectedUser.id}` : ''}
+          >
+            <div className="flex flex-wrap items-center gap-2 pb-3 border-b border-brand-900/50">
+              <Badge variant="brand" size="sm">სულ: {todos.length}</Badge>
+              <Badge variant="emerald" size="sm" icon="fa-solid fa-check">შესრულებული: {completedTodos}</Badge>
+              <Badge variant="amber" size="sm" icon="fa-regular fa-clock">მოლოდინში: {todos.length - completedTodos}</Badge>
+            </div>
+
+            {loadingTodos && (
+              <div className="flex flex-col items-center justify-center py-12 gap-3 text-center">
+                <i className="fa-solid fa-spinner animate-spin text-brand-400 text-xl"></i>
+                <span className="text-xs text-zinc-400 font-mono">იტვირთება დავალებები...</span>
+              </div>
+            )}
+
+            {!loadingTodos && !todoError && (
+              <div className="space-y-2 max-h-96 overflow-y-auto pr-1">
+                {todos.map((todo) => (
+                  <div key={todo.id} className="flex items-start gap-3 p-3 rounded-xl bg-forest-950/80 border border-brand-900/50 hover:border-brand-500/40 transition-colors">
+                    <span className={`mt-0.5 w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center border-2 ${todo.completed ? 'bg-brand-500 border-brand-500 text-forest-990' : 'border-zinc-600 text-transparent'}`}>
+                      {todo.completed && <i className="fa-solid fa-check text-[9px]"></i>}
+                    </span>
+                    <span className={`text-xs leading-relaxed flex-1 ${todo.completed ? 'line-through text-zinc-500' : 'text-zinc-200'}`}>
+                      {todo.title}
+                    </span>
+                    <span className={`text-[10px] font-mono flex-shrink-0 ${todo.completed ? 'text-brand-400' : 'text-amber-400'}`}>
+                      {todo.completed ? 'შესრულდა' : 'მოლოდინში'}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </Modal>
+        </section>
+      );
+    };
+
+    // Contact Section
+    const Contact = () => {
+      const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+      const [submitted, setSubmitted] = useState(false);
+      const [loading, setLoading] = useState(false);
+
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+      };
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setTimeout(() => {
+          setLoading(false);
+          setSubmitted(true);
+          setFormData({ name: '', email: '', subject: '', message: '' });
+          setTimeout(() => setSubmitted(false), 5000);
+        }, 800);
+      };
+
+      const contactItems = [
+        { icon: 'fa-regular fa-envelope', label: 'ელფოსტა', value: personalInfo.email, href: `mailto:${personalInfo.email}` },
+        { icon: 'fa-solid fa-phone', label: 'ტელეფონი', value: personalInfo.phone, href: `tel:${personalInfo.phone.replace(/\s+/g, '')}` },
+        { icon: 'fa-solid fa-location-dot', label: 'მისამართი', value: personalInfo.location, href: '#' },
+        { icon: 'fa-brands fa-github', label: 'GitHub', value: 'github.com/revaz', href: personalInfo.github, external: true },
+        { icon: 'fa-brands fa-linkedin', label: 'LinkedIn', value: 'linkedin.com/in/revaz', href: personalInfo.linkedin, external: true },
+      ];
+
+      return (
+        <section id="contact" className="scroll-mt-24 space-y-8">
+          <SectionHeader
+            badge="კავშირი"
+            badgeIcon="fa-regular fa-paper-plane"
+            title="დამიკავშირდით"
+            subtitle="გაქვთ საინტერესო პროექტი ან გსურთ თანამშრომლობა? სიამოვნებით განვიხილავ თქვენს წინადადებას:"
+          />
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8">
+            <div className="lg:col-span-2 space-y-4">
+              <div className="space-y-3">
+                {contactItems.map((item, idx) => (
+                  <Card
+                    key={idx}
+                    as="a"
+                    href={item.href}
+                    target={item.external ? '_blank' : undefined}
+                    rel={item.external ? 'noopener noreferrer' : undefined}
+                    className="flex items-center gap-4 p-4 !rounded-2xl cursor-pointer group"
+                  >
+                    <div className="w-11 h-11 rounded-xl bg-brand-500/15 border border-brand-500/30 flex items-center justify-center text-brand-300 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-forest-990 transition-all flex-shrink-0">
+                      <i className={`${item.icon} text-base`}></i>
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <span className="block text-[11px] font-mono text-zinc-400">{item.label}</span>
+                      <span className="text-sm font-semibold text-white group-hover:text-brand-300 transition-colors truncate block">
+                        {item.value}
+                      </span>
+                    </div>
+                    <i className="fa-solid fa-arrow-right text-xs text-brand-400/40 group-hover:text-brand-300 group-hover:translate-x-1 transition-all"></i>
+                  </Card>
+                ))}
+              </div>
+              <Card className="p-4 !rounded-2xl bg-gradient-to-br from-forest-900 to-forest-950 border-brand-500/30">
+                <div className="flex items-center gap-3">
+                  <span className="relative flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-brand-500"></span>
+                  </span>
+                  <div>
+                    <span className="block text-xs font-bold text-white">სტატუსი: ხელმისაწვდომი</span>
+                    <span className="text-[11px] text-zinc-400">პასუხის ტიპური დრო: 24 საათში</span>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            <div className="lg:col-span-3">
+              <Card className="p-6 sm:p-8" hover={false}>
+                {submitted && (
+                  <div className="mb-6 p-4 rounded-xl bg-brand-500/15 border border-brand-500/40 text-brand-300 flex items-center gap-3 text-sm animate-fade-in">
+                    <i className="fa-solid fa-circle-check text-lg text-brand-400"></i>
+                    <div>
+                      <strong className="block font-bold">გმადლობთ, შეტყობინება გაგზავნილია!</strong>
+                      <span className="text-xs text-zinc-300">უმოკლეს დროში დაგიკავშირდებით.</span>
+                    </div>
+                  </div>
+                )}
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <label htmlFor="name" className="block text-xs font-mono text-zinc-300">თქვენი სახელი *</label>
+                      <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        required
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="მაგ: გიორგი"
+                        className="w-full px-4 py-2.5 rounded-xl bg-forest-950 border border-brand-900/70 text-zinc-200 placeholder-zinc-500 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all"
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label htmlFor="email" className="block text-xs font-mono text-zinc-300">ელფოსტა *</label>
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="name@example.com"
+                        className="w-full px-4 py-2.5 rounded-xl bg-forest-950 border border-brand-900/70 text-zinc-200 placeholder-zinc-500 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all"
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-1.5">
+                    <label htmlFor="subject" className="block text-xs font-mono text-zinc-300">თემა</label>
+                    <input
+                      id="subject"
+                      name="subject"
+                      type="text"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      placeholder="პროექტის შეთავაზება / კონსულტაცია"
+                      className="w-full px-4 py-2.5 rounded-xl bg-forest-950 border border-brand-900/70 text-zinc-200 placeholder-zinc-500 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label htmlFor="message" className="block text-xs font-mono text-zinc-300">შეტყობინება *</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows="4"
+                      required
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="მოგვიყევით თქვენი პროექტის ან იდეის შესახებ..."
+                      className="w-full px-4 py-2.5 rounded-xl bg-forest-950 border border-brand-900/70 text-zinc-200 placeholder-zinc-500 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all resize-none"
+                    ></textarea>
+                  </div>
+                  <div className="pt-2 flex items-center justify-between">
+                    <span className="text-[11px] text-zinc-500 font-mono">* სავალდებულო ველები</span>
+                    <Button type="submit" variant="primary" size="md" icon="fa-regular fa-paper-plane" loading={loading}>
+                      გაგზავნა
+                    </Button>
+                  </div>
+                </form>
+              </Card>
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    // Footer Component
+    const Footer = () => {
+      const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      return (
+        <footer id="footer" className="border-t border-brand-900/60 bg-forest-990/90 backdrop-blur-xl py-8 sm:py-10 mt-16 sm:mt-24">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-5 text-xs sm:text-sm text-zinc-400 text-center md:text-left">
+            <div>
+              <p>&copy; 2026 <span className="text-brand-400 font-semibold">{personalInfo.name}</span>. ყველა უფლება დაცულია.</p>
+              <p className="text-[11px] text-zinc-500 font-mono mt-0.5">Built with React 18 & Tailwind CSS</p>
+            </div>
+            <div className="flex items-center gap-5">
+              <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="hover:text-brand-300 transition-colors flex items-center gap-1.5 py-1">
+                <i className="fa-brands fa-github text-base"></i>
+                <span>GitHub</span>
+              </a>
+              <span className="text-brand-900">|</span>
+              <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-brand-300 transition-colors flex items-center gap-1.5 py-1">
+                <i className="fa-brands fa-linkedin text-base"></i>
+                <span>LinkedIn</span>
+              </a>
+              <span className="text-brand-900">|</span>
+              <a href="index.html" className="hover:text-brand-300 transition-colors">მთავარი</a>
+              <span className="text-brand-900">·</span>
+              <a href="index1.html" className="hover:text-brand-300 transition-colors">პროექტები</a>
+              <span className="text-brand-900">·</span>
+              <a href="employees.html" className="hover:text-brand-300 transition-colors">თანამშრომლები</a>
+            </div>
+            <div>
+              <button
+                type="button"
+                onClick={scrollToTop}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-forest-900 border border-brand-900/80 text-brand-300 hover:text-white hover:border-brand-500/50 hover:bg-forest-850 transition-all text-xs font-mono cursor-pointer shadow-sm"
+              >
+                <i className="fa-solid fa-arrow-up text-xs"></i>
+                <span>ზევით დაბრუნება</span>
+              </button>
+            </div>
+          </div>
+        </footer>
+      );
+    };
+
+    // ============================================================
+    // 6. MAIN APP COMPONENT (მთავარი აპლიკაცია)
+    // ============================================================
+    const App = () => {
+      return (
+        <div className="text-zinc-200 font-sans antialiased selection:bg-brand-500 selection:text-black min-h-screen relative overflow-x-hidden flex flex-col justify-between">
+          {/* Ambient Lighting & Cyber Grid */}
+          <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden" aria-hidden="true">
+            <div className="absolute -top-32 -left-32 w-[550px] sm:w-[650px] h-[550px] sm:h-[650px] bg-brand-500/25 rounded-full blur-[130px] animate-pulse-emerald"></div>
+            <div className="absolute top-1/4 -right-32 w-[500px] sm:w-[600px] h-[500px] sm:h-[600px] bg-teal-400/20 rounded-full blur-[140px] animate-float-slow"></div>
+            <div className="absolute top-2/3 -left-32 w-[600px] sm:w-[700px] h-[600px] sm:h-[700px] bg-emerald-600/22 rounded-full blur-[150px]"></div>
+            <div className="absolute -bottom-32 right-1/4 w-[550px] sm:w-[650px] h-[550px] sm:h-[650px] bg-brand-400/20 rounded-full blur-[140px] animate-pulse-emerald"></div>
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#10b98115_1px,transparent_1px),linear-gradient(to_bottom,#10b98115_1px,transparent_1px)] bg-[size:36px_36px]"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(16,185,129,0.18),transparent_65%)]"></div>
+          </div>
+
+          <Navbar />
+
+          <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14 space-y-16 sm:space-y-24 flex-grow w-full">
+            <Hero />
+            <Skills />
+            <Projects />
+            <Experience />
+            <Employees />
+            <Contact />
+          </main>
+
+          <Footer />
+        </div>
+      );
+    };
+
+    // Render React App
+    ReactDOM.createRoot(document.getElementById('root')).render(
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    );
+  </script>
+</body>
+
+</html>
